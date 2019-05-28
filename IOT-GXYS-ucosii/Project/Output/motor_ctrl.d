@@ -1,0 +1,13 @@
+.\output\motor_ctrl.o: ..\User\driver\motor_ctrl.c
+.\output\motor_ctrl.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\motor_ctrl.o: .\Libraries\CMSIS\Include\core_cm0.h
+.\output\motor_ctrl.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\motor_ctrl.o: .\Libraries\CMSIS\Include\core_cmInstr.h
+.\output\motor_ctrl.o: .\Libraries\CMSIS\Include\core_cmFunc.h
+.\output\motor_ctrl.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h
+.\output\motor_ctrl.o: ..\User\stm32f0xx_conf.h
+.\output\motor_ctrl.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
+.\output\motor_ctrl.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\motor_ctrl.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h
+.\output\motor_ctrl.o: ..\User\driver\motor_ctrl.h
+.\output\motor_ctrl.o: ..\User\driver\led_app.h

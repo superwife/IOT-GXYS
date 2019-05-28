@@ -1,0 +1,13 @@
+.\output\w25qxx.o: ..\User\driver\w25qxx.c
+.\output\w25qxx.o: ..\User\driver\w25qxx.h
+.\output\w25qxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\w25qxx.o: ..\User\driver\spi_flash.h
+.\output\w25qxx.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\w25qxx.o: .\Libraries\CMSIS\Include\core_cm0.h
+.\output\w25qxx.o: .\Libraries\CMSIS\Include\core_cmInstr.h
+.\output\w25qxx.o: .\Libraries\CMSIS\Include\core_cmFunc.h
+.\output\w25qxx.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h
+.\output\w25qxx.o: ..\User\stm32f0xx_conf.h
+.\output\w25qxx.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
+.\output\w25qxx.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\w25qxx.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h

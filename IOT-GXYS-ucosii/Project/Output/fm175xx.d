@@ -1,0 +1,15 @@
+.\output\fm175xx.o: ..\User\driver\fm175xx.c
+.\output\fm175xx.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
+.\output\fm175xx.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\fm175xx.o: .\Libraries\CMSIS\Include\core_cm0.h
+.\output\fm175xx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\fm175xx.o: .\Libraries\CMSIS\Include\core_cmInstr.h
+.\output\fm175xx.o: .\Libraries\CMSIS\Include\core_cmFunc.h
+.\output\fm175xx.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h
+.\output\fm175xx.o: ..\User\stm32f0xx_conf.h
+.\output\fm175xx.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
+.\output\fm175xx.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h
+.\output\fm175xx.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\fm175xx.o: ..\User\driver\spi_175xx.h
+.\output\fm175xx.o: ..\User\driver\fm175xx.h
+.\output\fm175xx.o: ..\User\driver\led_app.h

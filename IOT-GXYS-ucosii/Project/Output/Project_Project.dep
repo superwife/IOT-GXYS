@@ -1,0 +1,514 @@
+Dependencies for Project 'Project', Target 'Project': (DO NOT MODIFY !)
+F (..\User\main.c)(0x5CEC964E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_iwdg.h)(0x4FB5B104)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+F (..\User\stm32f0xx_it.c)(0x502C5E9D)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_it.o --omf_browse .\output\stm32f0xx_it.crf --depend .\output\stm32f0xx_it.d)
+I (..\User\stm32f0xx_it.h)(0x502C5EA3)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (..\User\app\sec_app.c)(0x5CEBB967)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\sec_app.o --omf_browse .\output\sec_app.crf --depend .\output\sec_app.d)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+I (..\User\driver\usart.h)(0x5CD0ED3C)
+I (..\User\driver\spi_175xx.h)(0x5CD0FC98)
+I (..\User\driver\spi_flash.h)(0x5CEBB8E4)
+I (..\User\driver\wtn6170.h)(0x5CDBCC43)
+I (..\User\driver\motor_ctrl.h)(0x5CDBCBA4)
+F (..\User\driver\spi_flash.c)(0x5CEC9452)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\spi_flash.o --omf_browse .\output\spi_flash.crf --depend .\output\spi_flash.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_spi.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\User\driver\spi_flash.h)(0x5CEBB8E4)
+I (..\User\driver\w25qxx.h)(0x5CD393D1)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+F (..\User\app\gprs_protocol_app.c)(0x5CECA328)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\gprs_protocol_app.o --omf_browse .\output\gprs_protocol_app.crf --depend .\output\gprs_protocol_app.d)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (..\User\driver\usart_4g.h)(0x5CECA10B)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dma.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x4FB5B104)
+I (..\User\app\gprs_protocol_app.h)(0x5CECA10B)
+I (..\User\driver\motor_ctrl.h)(0x5CDBCBA4)
+I (..\User\driver\wtn6170.h)(0x5CDBCC43)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+I (..\User\driver\spi_flash.h)(0x5CEBB8E4)
+F (..\User\driver\led_app.c)(0x5CD29962)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\led_app.o --omf_browse .\output\led_app.crf --depend .\output\led_app.d)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+F (..\User\driver\usart.c)(0x5CD3CF3F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\usart.o --omf_browse .\output\usart.crf --depend .\output\usart.d)
+I (..\User\driver\usart.h)(0x5CD0ED3C)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h)(0x4FB5B104)
+F (..\User\driver\spi_175xx.c)(0x5CEC9430)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\spi_175xx.o --omf_browse .\output\spi_175xx.crf --depend .\output\spi_175xx.d)
+I (..\User\driver\spi_175xx.h)(0x5CD0FC98)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\User\driver\fm175xx.h)(0x5CD0F8E7)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+I (..\User\driver\wtn6170.h)(0x5CDBCC43)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (..\User\app\gprs_protocol_app.h)(0x5CECA10B)
+F (..\User\driver\fm175xx.c)(0x5CD3DF74)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\fm175xx.o --omf_browse .\output\fm175xx.crf --depend .\output\fm175xx.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\User\driver\spi_175xx.h)(0x5CD0FC98)
+I (..\User\driver\fm175xx.h)(0x5CD0F8E7)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+F (..\User\driver\wtn6170.c)(0x5CD2A0DB)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\wtn6170.o --omf_browse .\output\wtn6170.crf --depend .\output\wtn6170.d)
+I (..\User\driver\wtn6170.h)(0x5CDBCC43)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+F (..\User\driver\w25qxx.c)(0x5CD4D530)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\w25qxx.o --omf_browse .\output\w25qxx.crf --depend .\output\w25qxx.d)
+I (..\User\driver\w25qxx.h)(0x5CD393D1)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\User\driver\spi_flash.h)(0x5CEBB8E4)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (..\User\driver\motor_ctrl.c)(0x5CDBCB9D)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\motor_ctrl.o --omf_browse .\output\motor_ctrl.crf --depend .\output\motor_ctrl.d)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (..\User\driver\motor_ctrl.h)(0x5CDBCBA4)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+F (..\User\driver\usart_4g.c)(0x5CECA10B)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\usart_4g.o --omf_browse .\output\usart_4g.crf --depend .\output\usart_4g.d)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (..\User\driver\led_app.h)(0x5CD28EE8)
+I (..\User\driver\usart_4g.h)(0x5CECA10B)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dma.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x4FB5B104)
+I (..\User\app\gprs_protocol_app.h)(0x5CECA10B)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_rcc.o --omf_browse .\output\stm32f0xx_rcc.crf --depend .\output\stm32f0xx_rcc.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_gpio.o --omf_browse .\output\stm32f0xx_gpio.crf --depend .\output\stm32f0xx_gpio.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_usart.c)(0x4FB5B108)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_usart.o --omf_browse .\output\stm32f0xx_usart.crf --depend .\output\stm32f0xx_usart.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.c)(0x4FB5B104)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_adc.o --omf_browse .\output\stm32f0xx_adc.crf --depend .\output\stm32f0xx_adc.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_adc.h)(0x4FB5B102)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.c)(0x4FB5B104)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_cec.o --omf_browse .\output\stm32f0xx_cec.crf --depend .\output\stm32f0xx_cec.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_cec.h)(0x4FB5B102)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_comp.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_comp.o --omf_browse .\output\stm32f0xx_comp.crf --depend .\output\stm32f0xx_comp.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_comp.h)(0x4FB5B102)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_crc.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_crc.o --omf_browse .\output\stm32f0xx_crc.crf --depend .\output\stm32f0xx_crc.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_crc.h)(0x4FB5B102)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dac.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_dac.o --omf_browse .\output\stm32f0xx_dac.crf --depend .\output\stm32f0xx_dac.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dac.h)(0x4FB5B102)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dbgmcu.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_dbgmcu.o --omf_browse .\output\stm32f0xx_dbgmcu.crf --depend .\output\stm32f0xx_dbgmcu.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dbgmcu.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_dma.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_dma.o --omf_browse .\output\stm32f0xx_dma.crf --depend .\output\stm32f0xx_dma.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dma.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_exti.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_exti.o --omf_browse .\output\stm32f0xx_exti.crf --depend .\output\stm32f0xx_exti.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_exti.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_flash.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_flash.o --omf_browse .\output\stm32f0xx_flash.crf --depend .\output\stm32f0xx_flash.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_flash.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_i2c.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_i2c.o --omf_browse .\output\stm32f0xx_i2c.crf --depend .\output\stm32f0xx_i2c.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_i2c.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_iwdg.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_iwdg.o --omf_browse .\output\stm32f0xx_iwdg.crf --depend .\output\stm32f0xx_iwdg.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_iwdg.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_misc.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_misc.o --omf_browse .\output\stm32f0xx_misc.crf --depend .\output\stm32f0xx_misc.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_pwr.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_pwr.o --omf_browse .\output\stm32f0xx_pwr.crf --depend .\output\stm32f0xx_pwr.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_pwr.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rtc.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_rtc.o --omf_browse .\output\stm32f0xx_rtc.crf --depend .\output\stm32f0xx_rtc.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rtc.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_spi.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_spi.o --omf_browse .\output\stm32f0xx_spi.crf --depend .\output\stm32f0xx_spi.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_spi.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_syscfg.c)(0x4FB5B106)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_syscfg.o --omf_browse .\output\stm32f0xx_syscfg.crf --depend .\output\stm32f0xx_syscfg.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_syscfg.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_tim.c)(0x4FB5B108)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_tim.o --omf_browse .\output\stm32f0xx_tim.crf --depend .\output\stm32f0xx_tim.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_tim.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_wwdg.c)(0x4FB5B108)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\stm32f0xx_wwdg.o --omf_browse .\output\stm32f0xx_wwdg.crf --depend .\output\stm32f0xx_wwdg.d)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_wwdg.h)(0x4FB5B104)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (.\startup_stm32f0xx.s)(0x5CD1221B)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "STM32F030x8 SETA 1"--list .\listing\startup_stm32f0xx.lst --xref -o .\output\startup_stm32f0xx.o --depend .\output\startup_stm32f0xx.d)
+F (..\User\system_stm32f0xx.c)(0x5CD1230C)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\system_stm32f0xx.o --omf_browse .\output\system_stm32f0xx.crf --depend .\output\system_stm32f0xx.d)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (..\uCOS-II\Source\os_core.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_core.o --omf_browse .\output\os_core.crf --depend .\output\os_core.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_flag.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_flag.o --omf_browse .\output\os_flag.crf --depend .\output\os_flag.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_mbox.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_mbox.o --omf_browse .\output\os_mbox.crf --depend .\output\os_mbox.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_mem.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_mem.o --omf_browse .\output\os_mem.crf --depend .\output\os_mem.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_mutex.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_mutex.o --omf_browse .\output\os_mutex.crf --depend .\output\os_mutex.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_q.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_q.o --omf_browse .\output\os_q.crf --depend .\output\os_q.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_sem.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_sem.o --omf_browse .\output\os_sem.crf --depend .\output\os_sem.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_task.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_task.o --omf_browse .\output\os_task.crf --depend .\output\os_task.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_time.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_time.o --omf_browse .\output\os_time.crf --depend .\output\os_time.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Source\os_tmr.c)(0x4C0714AE)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_tmr.o --omf_browse .\output\os_tmr.crf --depend .\output\os_tmr.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+F (..\uCOS-II\Ports\os_cpu_a.asm)(0x502C5F84)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 514" --pd "STM32F030x8 SETA 1"--list .\listing\os_cpu_a.lst --xref -o .\output\os_cpu_a.o --depend .\output\os_cpu_a.d)
+F (..\uCOS-II\Ports\os_cpu_c.c)(0x502C5EC0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_cpu_c.o --omf_browse .\output\os_cpu_c.crf --depend .\output\os_cpu_c.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x4FB5B116)
+I (.\Libraries\CMSIS\Include\core_cm0.h)(0x4F029BFC)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (.\Libraries\CMSIS\Include\core_cmInstr.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Include\core_cmFunc.h)(0x4F029BFC)
+I (.\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x4FB5B116)
+I (..\User\stm32f0xx_conf.h)(0x502C5EAA)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h)(0x4FB5B104)
+I (.\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h)(0x4FB5B104)
+F (..\uCOS-II\Ports\os_dbg.c)(0x502C5ECD)(-c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork -I..\User -I..\uCOS-II\Ports -I..\uCOS-II\Source -I.\Libraries\CMSIS\Include -I.\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\Libraries\STM32F0xx_CPAL_Driver\inc -I.\Libraries\STM32F0xx_StdPeriph_Driver\inc -I..\User\driver -I.\Libraries\STM32F0xx_StdPeriph_Driver\src -I..\User\app-I E:\zhouchao\IOT-WORK\IOT-1-¹²ÏíÓêÉ¡\IOT-GXYS-ucosii\Project\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F030x8 -DSTM32F0XX -DUSE_STDPERIPH_DRIVER-o .\output\os_dbg.o --omf_browse .\output\os_dbg.crf --depend .\output\os_dbg.d)
+I (..\uCOS-II\Source\ucos_ii.h)(0x4C0714AE)
+I (..\User\app_cfg.h)(0x5CDBA452)
+I (..\User\os_cfg.h)(0x4FE2CC36)
+I (..\uCOS-II\Ports\os_cpu.h)(0x483F2548)

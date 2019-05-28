@@ -1,0 +1,15 @@
+.\output\spi_flash.o: ..\User\driver\spi_flash.c
+.\output\spi_flash.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_spi.h
+.\output\spi_flash.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\spi_flash.o: .\Libraries\CMSIS\Include\core_cm0.h
+.\output\spi_flash.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\spi_flash.o: .\Libraries\CMSIS\Include\core_cmInstr.h
+.\output\spi_flash.o: .\Libraries\CMSIS\Include\core_cmFunc.h
+.\output\spi_flash.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h
+.\output\spi_flash.o: ..\User\stm32f0xx_conf.h
+.\output\spi_flash.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
+.\output\spi_flash.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\spi_flash.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h
+.\output\spi_flash.o: ..\User\driver\spi_flash.h
+.\output\spi_flash.o: ..\User\driver\w25qxx.h
+.\output\spi_flash.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
