@@ -40,6 +40,7 @@
 #define SPI1_NFC_NSS_PORT                   GPIOA
 #define SPI1_NFC_NSS_CLK                    RCC_AHBPeriph_GPIOA 
 
+
 //¿ØÖÆÄ£Ê½ÃüÁî
 #define RST_H                            GPIO_SetBits(SPI1_NFC_RST_PORT, SPI1_NFC_RST_PIN)
 #define RST_L                            GPIO_ResetBits(SPI1_NFC_RST_PORT, SPI1_NFC_RST_PIN)

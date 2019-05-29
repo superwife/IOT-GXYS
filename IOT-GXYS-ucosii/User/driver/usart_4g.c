@@ -283,12 +283,12 @@ void AT_CIPRXGET(void)
 /************************************************
 函数名称 ： AT_CIPOPEN
 功    能 ： 设置ip
-参    数 ： 无
+参    数 ： 无	m24n990065.qicp.vip 111.67.206.112
 返 回 值 ： 无
 *************************************************/
 void AT_CIPOPEN(void)											
 {
-	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"111.67.206.112\",8080\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"111.67.206.112\",8080\r\n"));
+	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n"));
 }
 /************************************************
 函数名称 ： AT_CHECK_CIPOPEN

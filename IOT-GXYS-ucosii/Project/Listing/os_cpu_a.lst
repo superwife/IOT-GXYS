@@ -445,10 +445,10 @@ ARM Macro Assembler    Page 7
   315 00000134                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
 ork --depend=.\output\os_cpu_a.d -o.\output\os_cpu_a.o -IE:\zhouchao\IOT-WORK\I
-OT-1-π≤œÌ”Í…°\IOT-GXYS-ucosii\Project\RTE -ID:\Keil_v5\ARM\PACK\Keil\STM32F0xx_
-DFP\2.0.0 -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --pred
-efine="__UVISION_VERSION SETA 514" --predefine="STM32F030x8 SETA 1" --list=.\li
-sting\os_cpu_a.lst ..\uCOS-II\Ports\os_cpu_a.asm
+OT-1-π≤œÌ”Í…°\»Ìº˛≥Ã–Ú\IOT-GXYS\IOT-GXYS-ucosii\Project\RTE -ID:\Keil_v5\ARM\PA
+CK\Keil\STM32F0xx_DFP\2.0.0 -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICRO
+LIB SETA 1" --predefine="__UVISION_VERSION SETA 514" --predefine="STM32F030x8 S
+ETA 1" --list=.\listing\os_cpu_a.lst ..\uCOS-II\Ports\os_cpu_a.asm
 
 
 

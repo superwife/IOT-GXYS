@@ -275,19 +275,19 @@ char PcdReset(void)
     RST_L;
     delay_10ms(1);
     RST_H;
-	  delay_10ms(10);
+	delay_10ms(10);
 	
-		if(ReadRawRC(0x02) == 0x80)
-		{
-			led_ctrl_func(ALM_LED,1);
-			delay_10ms(10);	
-			led_ctrl_func(ALM_LED,0);
-			delay_10ms(10);	
-			led_ctrl_func(ALM_LED,1);
-			delay_10ms(10);	
-			led_ctrl_func(ALM_LED,0);
-			delay_10ms(10);	
-		}
+	if(ReadRawRC(0x02) == 0x80)
+	{
+		led_ctrl_func(ALM_LED,1);
+		delay_10ms(10);	
+		led_ctrl_func(ALM_LED,0);
+		delay_10ms(10);	
+		led_ctrl_func(ALM_LED,1);
+		delay_10ms(10);	
+		led_ctrl_func(ALM_LED,0);
+		delay_10ms(10);	
+	}
 
     WriteRawRC(CommandReg,PCD_RESETPHASE);
     

@@ -41,6 +41,8 @@ int main(void)
     OSInit();
     OS_CPU_SysTickInit();
 	iwdg_init();
+	LED_Configuration ();
+	USART_Initializes();
     
 //    //创建LED1闪烁的任务
 //    os_err = OSTaskCreate( App_Task_LED1,

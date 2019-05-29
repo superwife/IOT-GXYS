@@ -46,7 +46,7 @@ void  App_Task_4G(void* p_arg)
 		system_clock++;
 		led_ctrl_func(ALM_LED,system_clock%2);
 		sim7600_stat_check();
-		if(sim7600_flag.sim7600_work_flag)						//如果4g模块正常工作，那么开始注册，或者发送生命信号
+		if(sim7600_flag.sim7600_work_flag&&(system_clock%10==0))	//如果4g模块正常工作，那么开始注册，或者发送生命信号
 		{
 			if(sim7600_flag.sim7600_register_flag==0)
 			{
@@ -121,7 +121,7 @@ void sim7600_flaga_deal(uint8_t *data,uint16_t len)
 	printf("\r\n");
 #endif
 	
-	if ((*(uint16_t*)(&data[0])==0xaa55)&&(*(uint16_t*)(&data[2])==len))
+	if ((*(uint16_t*)(&data[0])==0xaa55)&&(((data[2]<<8)+data[3])==len))
 	{	
 		for (i=0; i<len-1; i++)
 		{
@@ -170,7 +170,7 @@ void sim7600_flaga_deal(uint8_t *data,uint16_t len)
 					if(data[7]==0x01)
 					{
 						printf("recv ADD_UMBRELLA_CMD\r\n");
-						sim7600_reply_return_data(CONFIRM_OK);						//确认归还成功
+						sim7600_reply_add_data(CONFIRM_OK);							//确认添伞成功
 					}
 					break;
 				case REGISTER_INFO_CMD:
@@ -279,7 +279,7 @@ void sim7600_reply_add_data(uint8_t etype)
 {
 	uint8_t buffer[1] = {0};
 	buffer[0] = etype;						//数据有效
-	gprs_protocol_data_send(SERVER_BOARD,UMBRELLA_MSG_CMD,buffer,sizeof(buffer));
+	gprs_protocol_data_send(SERVER_BOARD,ADD_UMBRELLA_CMD,buffer,sizeof(buffer));
 }
 
 /************************************************
@@ -295,8 +295,8 @@ void gprs_protocol_data_send(uint8_t taget, uint8_t id, uint8_t *data, uint16_t 
     	
     usart_4g_data[0] = 0x55;
     usart_4g_data[1] = 0xAA;
-    usart_4g_data[2] = len+PRO_HEAD_LEN;
-    usart_4g_data[3] = (uint8_t)((len+PRO_HEAD_LEN) >> 8);
+    usart_4g_data[2] = (uint8_t)((len+PRO_HEAD_LEN) >> 8);
+    usart_4g_data[3] = len+PRO_HEAD_LEN;
     usart_4g_data[4] = id;
     usart_4g_data[5] = taget;	
     usart_4g_data[6] = BOARD_NUMB;

@@ -39,8 +39,6 @@ extern struct REGISTER_INFO_ST register_info;
 void  App_Task_SEC(void* p_arg)
 {
 	uint8_t delay_i = 0;
-	LED_Configuration ();
-	USART_Initializes();
 	spi_nfc_init();
 	signal_motro_gpio_init();
 	wtn6170_gpio_init();
