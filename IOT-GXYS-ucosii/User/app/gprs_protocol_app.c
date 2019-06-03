@@ -19,15 +19,21 @@
 void  App_Task_4G(void* p_arg);
 
 /*------------------ private func ---------------------*/
-static void sim7600_stat_check(void);
+
 
 /*------------------ public para ---------------------*/
 uint16_t sim7600_connt_err_cnt=0;
 
+uint8_t cmd_data[DMA_DATA_LEN]={0};
+
 /*------------------ extern para ---------------------*/
-extern struct sim7600_flag_ST sim7600_flag;
+extern struct sim7600_flag_st sim7600_flag;
 extern struct REGISTER_INFO_ST register_info;
 extern struct spi_data_info_st spi_info;
+extern uint8_t nfc_work_mode;									//定义nfc工作模式，1：借伞模式，0：添伞模式
+extern OS_EVENT *sim_4g_sem;									//4g通信信号量
+
+void usart_data_send(void);
 
 /******************************************************************************
 * @brief  App_Task_4G
@@ -37,33 +43,19 @@ extern struct spi_data_info_st spi_info;
 *******************************************************************************/
 void  App_Task_4G(void* p_arg)
 {
-	uint8_t system_clock = 0;
-	
-	usart_4g_init();
-
+	uint8_t err = 0;
 	while(1)
 	{
-		system_clock++;
-		led_ctrl_func(ALM_LED,system_clock%2);
-		sim7600_stat_check();
-		if(sim7600_flag.sim7600_work_flag&&(system_clock%10==0))	//如果4g模块正常工作，那么开始注册，或者发送生命信号
-		{
-			if(sim7600_flag.sim7600_register_flag==0)
-			{
-				sim7600_send_register_data((uint8_t *)&register_info,sizeof(struct REGISTER_INFO_ST));
-			}
-			else
-			{
-				sim7600_send_lifesignal_data(system_clock);
-			}
-		}	
+		OSSemPend(sim_4g_sem, 0, &err);
+		printf("recv sim data\r\n");
+		protocol_deal(cmd_data);
 		
 //		sim7600_connt_err_cnt++;								//4g连接异常处理
 //		if(sim7600_connt_err_cnt>50)		
 //		{
 //			sim7600_flag.sim7600_work_flag = 0;					
 //		}
-		OSTimeDly(1000);
+		OSTimeDly(200);
 	}
 }
 
@@ -102,12 +94,12 @@ void sim7600_stat_check(void)
 	
 }
 /************************************************
-函数名称 ： sim7600_flaga_deal
+函数名称 ： sim7600_data_deal
 功    能 ： sim7600数据接收处理函数
 参    数 ： 接收到数据，接收到数据长度
 返 回 值 ： 无
 *************************************************/
-void sim7600_flaga_deal(uint8_t *data,uint16_t len)
+void sim7600_data_deal(uint8_t *data,uint16_t len)
 {
 	uint8_t i = 0,crc = 0;
 	
@@ -121,7 +113,7 @@ void sim7600_flaga_deal(uint8_t *data,uint16_t len)
 	printf("\r\n");
 #endif
 	
-	if ((*(uint16_t*)(&data[0])==0xaa55)&&(((data[2]<<8)+data[3])==len))
+	if ((data[0]==0x55)&&(data[1]==0xaa)&&(((data[2]<<8)+data[3])==len))
 	{	
 		for (i=0; i<len-1; i++)
 		{
@@ -130,62 +122,135 @@ void sim7600_flaga_deal(uint8_t *data,uint16_t len)
 		if (crc == data[len-1])
 		{
 			sim7600_connt_err_cnt=0;
-			switch(data[4])
-			{
-				case LIFE_SIGNAL_CMD:
-					printf("recv LIFE_SIGNAL_CMD\r\n");
-					
-					break;
-				case PICK_UP_CMD:
-					if(data[7]==0x01)
-					{
-						printf("recv PICK_UP_CMD\r\n");
-						wtn_send_data(PLEASE_PICK_UP);								//语音提示取伞
-						sim7600_reply_pickup_data(CONFIRM_OK);						//回复消息
-					}
-					break;
-				case UNLOCKING_CMD:
-					if(data[7]==0x01)
-					{
-						printf("recv UNLOCKING_CMD\r\n");
-						unlocking();												//开锁
-						wtn_send_data(BOOK_SUCCESS);								//语音提示
-						sim7600_reply_unlocking_data(CONFIRM_OK);					//确认开锁成功
-					}
-					break;
-				case UMBRELLA_MSG_CMD:												//确认服务器收到伞消息
-					if(data[7]==CONFIRM_OK)
-					{
-						printf("recv UMBRELLA_MSG_CMD\r\n");
-					}
-					break;
-				case GIVE_BACK_OVER_CMD:
-					if(data[7]==0x01)
-					{
-						printf("recv GIVE_BACK_OVER_CMD\r\n");
-						sim7600_reply_return_data(CONFIRM_OK);						//确认归还成功
-					}
-					break;
-				case ADD_UMBRELLA_CMD:
-					if(data[7]==0x01)
-					{
-						printf("recv ADD_UMBRELLA_CMD\r\n");
-						sim7600_reply_add_data(CONFIRM_OK);							//确认添伞成功
-					}
-					break;
-				case REGISTER_INFO_CMD:
-					if(data[7]==CONFIRM_OK)
-					{
-						printf("recv REGISTER_INFO_CMD\r\n");
-						sim7600_flag.sim7600_register_flag = 1;						//确认注册成功
-					}		
-					break;		
-				default:
-					break;
-			}
+			memset(cmd_data,0,sizeof(cmd_data));
+			memmove(cmd_data,data,len);
+			OSSemPost(sim_4g_sem);
 		}
 	}
 }
+/************************************************
+函数名称 ： protocol_deal
+功    能 ： 消息命令处理函数
+参    数 ： 接收到数据，接收到数据长度
+返 回 值 ： 无
+*************************************************/
+void protocol_deal(uint8_t *data)
+{
+	uint8_t i = 0;
+	switch(data[4])
+	{
+		case LIFE_SIGNAL_CMD:
+			printf("recv LIFE_SIGNAL_CMD\r\n");
+			
+			break;
+		case PICK_UP_CMD:
+			if(data[7]==0x01)
+			{
+				printf("recv PICK_UP_CMD\r\n");
+				wtn_send_data(PLEASE_PICK_UP);								//语音提示取伞
+				sim7600_reply_pickup_data(CONFIRM_OK);						//回复消息
+			}
+			break;
+		case UNLOCKING_CMD:
+			if(data[7]==0x01)
+			{
+				switch(data[8])
+				{
+					case 0x01:														//开借伞锁
+						printf("recv UNLOCKING_BOOK_LOCK_CMD\r\n");
+						unlocking_ctrl(BOOK_LOCK,LOCK_ON);							//开锁
+						for(i=0;i<UNLOCK_TIME_OUT_CNT*5;i++)
+						{
+							OSTimeDly(200);
+							if(BOOK_TRAVEL_SW_CHECK==0)
+							{
+								delay_us(2);
+								if(BOOK_TRAVEL_SW_CHECK==0)
+								{
+									wtn_send_data(BOOK_SUCCESS);					//语音提示
+									sim7600_reply_unlocking_data(CONFIRM_OK);		//确认开锁成功
+									OSTimeDly(2000);
+									unlocking_ctrl(BOOK_LOCK,LOCK_OFF);				//关锁
+									printf("unlock BOOK_LOCK success\r\n");
+									return;
+								}
+							}
+						}
+						sim7600_reply_unlocking_data(UNLOCKING_ERR);				//开锁失败
+						unlocking_ctrl(BOOK_LOCK,LOCK_OFF);							//关锁
+						printf("unlock BOOK_LOCK err\r\n");
+						break;
+					case 0x02:
+						printf("recv UNLOCKING_RETURN_LOCK_CMD\r\n");				//开还伞锁
+						unlocking_ctrl(RETURN_LOCK,LOCK_ON);						//开锁
+						for(i=0;i<UNLOCK_TIME_OUT_CNT*5;i++)						//超时检测
+						{
+							OSTimeDly(200);
+							if(RETURN_TRAVEL_SW_CHECK==0)
+							{
+								delay_us(2);
+								if(RETURN_TRAVEL_SW_CHECK==0)
+								{
+									wtn_send_data(BOOK_SUCCESS);					//语音提示
+									sim7600_reply_unlocking_data(CONFIRM_OK);		//确认开锁成功
+									OSTimeDly(2000);
+									unlocking_ctrl(RETURN_LOCK,LOCK_OFF);			//关锁
+									printf("unlock RETURN_LOCK success\r\n");
+									return;
+								}
+							}
+						}
+						sim7600_reply_unlocking_data(UNLOCKING_ERR);				//开锁失败
+						unlocking_ctrl(RETURN_LOCK,LOCK_OFF);						//关锁
+						printf("unlock RETURN_LOCK err\r\n");
+						break;
+					case 0x03:
+						printf("recv UNLOCKING_ADD_LOCK_CMD\r\n");					//开添伞锁
+						unlocking_ctrl(BOOK_LOCK,LOCK_ON);							//开锁
+						wtn_send_data(BOOK_SUCCESS);								//语音提示
+						sim7600_reply_unlocking_data(CONFIRM_OK);					//确认开锁成功
+						break;
+					default:
+						
+						break;
+				}
+			}
+			break;
+		case UMBRELLA_MSG_CMD:												//确认服务器收到伞消息
+			if(data[7]==CONFIRM_OK)
+			{
+				printf("recv UMBRELLA_MSG_CMD\r\n");
+				make_buzzer_sound();
+			}
+			
+			break;
+		case GIVE_BACK_OVER_CMD:
+			if(data[7]==0x01)
+			{
+				printf("recv GIVE_BACK_OVER_CMD\r\n");
+				sim7600_reply_return_data(CONFIRM_OK);						//确认归还成功
+			}
+			break;
+		case ADD_UMBRELLA_CMD:
+			if(data[7]==0x01)
+			{
+				printf("recv ADD_UMBRELLA_CMD\r\n");
+				sim7600_reply_add_data(CONFIRM_OK);							//确认添伞成功
+			}
+			break;
+		case REGISTER_INFO_CMD:
+			if(data[7]==CONFIRM_OK)
+			{
+				printf("recv REGISTER_INFO_CMD\r\n");
+				sim7600_flag.sim7600_register_flag = 1;						//确认注册成功
+			}		
+			break;		
+		default:
+			break;
+	}
+}
+
+
 /************************************************
 函数名称 ： sim7600_send_lifesignal_data
 功    能 ： 发送生命信号
@@ -214,10 +279,16 @@ void sim7600_send_umbrella_data(uint8_t *data,uint8_t len)
 	{
 		printf("umbrella_data err\r\n");
 	}
-	
-	buffer[0] = 0x01;						//数据有效
+	if(nfc_work_mode == 1)
+	{
+		buffer[0] = 0x01;						//伞信息来自借/还伞nfc
+	}
+	else
+	{
+		buffer[0] = 0x02;						//伞信息来自添伞nfc
+	}
 	memmove(buffer+1,data,len);
-	gprs_protocol_data_send(SERVER_BOARD,UMBRELLA_MSG_CMD,buffer,len+1);
+	gprs_protocol_data_send(SERVER_BOARD,UMBRELLA_MSG_CMD,buffer,len+1);	
 }
 /************************************************
 函数名称 ： sim7600_send_register_data
@@ -283,7 +354,7 @@ void sim7600_reply_add_data(uint8_t etype)
 }
 
 /************************************************
-函数名称 ： sim7600_flaga_deal
+函数名称 ： gprs_protocol_data_send
 功    能 ： sim7600数据接收处理函数
 参    数 ： 无
 返 回 值 ： 无
@@ -315,5 +386,37 @@ void gprs_protocol_data_send(uint8_t taget, uint8_t id, uint8_t *data, uint16_t 
 	usart_4g_send_data(usart_4g_data,len + PRO_HEAD_LEN);
 }
 
+/************************************************
+函数名称 ： usart_data_send
+功    能 ： 发送数据函数
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void usart_data_send(void)	   
+{
+    uint8_t usart2_data[128]={0}; 
+    uint8_t crc=0, i=0;
+	uint8_t data[1]={0x02},len = 1;
+    	
+    usart2_data[0] = 0x55;
+    usart2_data[1] = 0xAA;
+    usart2_data[2] = (uint8_t)((len+PRO_HEAD_LEN) >> 8);
+    usart2_data[3] = len+PRO_HEAD_LEN;
+    usart2_data[4] = CONNECT_ERR;
+    usart2_data[5] = SERVER_BOARD;	
+    usart2_data[6] = BOARD_NUMB;
 
+    for(i=0; i<len; i++)
+    {
+        usart2_data[7+i] = data[i];
+    }
+    crc=0;
+    for(i=0; i<PRO_HEAD_LEN+len-1; i++)
+    {
+        crc += usart2_data[i];
+    }
+    usart2_data[PRO_HEAD_LEN+len-1] = crc;
+
+	USART1_SendNByte(usart2_data,len + PRO_HEAD_LEN);
+}
 

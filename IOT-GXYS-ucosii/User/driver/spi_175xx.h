@@ -20,9 +20,9 @@
 #define SPI1_NFC_IQR_PORT                   GPIOB
 #define SPI1_NFC_IQR_CLK                    RCC_AHBPeriph_GPIOB 
 
-#define SPI1_NFC_RST_PIN                    GPIO_Pin_6
-#define SPI1_NFC_RST_PORT                   GPIOB
-#define SPI1_NFC_RST_CLK                    RCC_AHBPeriph_GPIOB  
+//#define SPI1_NFC_RST_PIN                    GPIO_Pin_6
+//#define SPI1_NFC_RST_PORT                   GPIOB
+//#define SPI1_NFC_RST_CLK                    RCC_AHBPeriph_GPIOB  
 
 #define SPI1_NFC_MOSI_PIN                   GPIO_Pin_5  
 #define SPI1_NFC_MOSI_PORT                  GPIOB
@@ -36,27 +36,45 @@
 #define SPI1_NFC_SCK_PORT                   GPIOB
 #define SPI1_NFC_SCK_CLK                    RCC_AHBPeriph_GPIOB 
 
-#define SPI1_NFC_NSS_PIN                    GPIO_Pin_15 
-#define SPI1_NFC_NSS_PORT                   GPIOA
-#define SPI1_NFC_NSS_CLK                    RCC_AHBPeriph_GPIOA 
+#define SPI1_NFC_NSS1_PIN                    GPIO_Pin_15 
+#define SPI1_NFC_NSS1_PORT                   GPIOA
+#define SPI1_NFC_NSS1_CLK                    RCC_AHBPeriph_GPIOA 
 
+#define SPI1_NFC_NSS2_PIN                    GPIO_Pin_6
+#define SPI1_NFC_NSS2_PORT                   GPIOB
+#define SPI1_NFC_NSS2_CLK                    RCC_AHBPeriph_GPIOB 
 
 //控制模式命令
-#define RST_H                            GPIO_SetBits(SPI1_NFC_RST_PORT, SPI1_NFC_RST_PIN)
-#define RST_L                            GPIO_ResetBits(SPI1_NFC_RST_PORT, SPI1_NFC_RST_PIN)
-
+//#define RST_H                            GPIO_SetBits(SPI1_NFC_RST_PORT, SPI1_NFC_RST_PIN)
+//#define RST_L                            GPIO_ResetBits(SPI1_NFC_RST_PORT, SPI1_NFC_RST_PIN)
 #define MOSI_H                           GPIO_SetBits(SPI1_NFC_MOSI_PORT, SPI1_NFC_MOSI_PIN)
 #define MOSI_L                           GPIO_ResetBits(SPI1_NFC_MOSI_PORT, SPI1_NFC_MOSI_PIN)
-
 #define SCK_H                            GPIO_SetBits(SPI1_NFC_SCK_PORT, SPI1_NFC_SCK_PIN)
 #define SCK_L                            GPIO_ResetBits(SPI1_NFC_SCK_PORT, SPI1_NFC_SCK_PIN)
-
-#define NSS_H                            GPIO_SetBits(SPI1_NFC_NSS_PORT, SPI1_NFC_NSS_PIN)
-#define NSS_L                            GPIO_ResetBits(SPI1_NFC_NSS_PORT, SPI1_NFC_NSS_PIN)
-
+#define NSS1_H                           GPIO_SetBits(SPI1_NFC_NSS1_PORT, SPI1_NFC_NSS1_PIN)
+#define NSS1_L                           GPIO_ResetBits(SPI1_NFC_NSS1_PORT, SPI1_NFC_NSS1_PIN)
+#define NSS2_H                           GPIO_SetBits(SPI1_NFC_NSS2_PORT, SPI1_NFC_NSS2_PIN)
+#define NSS2_L                           GPIO_ResetBits(SPI1_NFC_NSS2_PORT, SPI1_NFC_NSS2_PIN)
 #define READ_MISO                        GPIO_ReadInputDataBit(SPI1_NFC_MISO_PORT, SPI1_NFC_MISO_PIN)
 
+//4G电源开关
+//#define POWER_4G_PORT 					 GPIOA
+//#define POWER_4G_PIN					 GPIO_Pin_0
+//#define POWER_4G_CLK            		 RCC_AHBPeriph_GPIOA 
 
+//#define POWER_4G_ON						 GPIO_SetBits(POWER_4G_PORT, POWER_4G_PIN)	
+//#define POWER_4G_OFF					 GPIO_ResetBits(POWER_4G_PORT, POWER_4G_PIN)
+
+
+//确认NFC读写模式
+//#define NFC_WORK_MODE					 0
+//#if NFC_WORK_MODE						 	
+//	#define NSS_H                 	     NSS1_H	
+//	#define NSS_L                        NSS1_L
+//#else
+//	#define NSS_H                 	     NSS2_H	
+//	#define NSS_L                        NSS2_L
+//#endif
 
 void spi_nfc_gpio_init(void);
 void spi_nfc_mode_config(void);

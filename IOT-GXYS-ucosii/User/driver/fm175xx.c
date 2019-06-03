@@ -4,6 +4,9 @@
 #include "fm175xx.h"
 #include "led_app.h"
 //#include <string.h> 
+/*------------ extern para ---------------*/
+extern uint8_t nfc_work_mode;
+
 
 #define MAXRLEN 18                        
 /////////////////////////////////////////////////////////////////////
@@ -270,12 +273,12 @@ void CalulateCRC(unsigned char *pIndata,unsigned char len,unsigned char *pOutDat
 /////////////////////////////////////////////////////////////////////
 char PcdReset(void)
 {
-    RST_H;
-    delay_10ms(1);
-    RST_L;
-    delay_10ms(1);
-    RST_H;
-	delay_10ms(10);
+//    RST_H;
+//    delay_10ms(1);
+//    RST_L;
+//    delay_10ms(1);
+//    RST_H;
+//	delay_10ms(10);
 	
 	if(ReadRawRC(0x02) == 0x80)
 	{
@@ -356,33 +359,55 @@ char M500PcdConfigISOType(unsigned char type)
 /////////////////////////////////////////////////////////////////////
 unsigned char ReadRawRC(unsigned char Address)
 {
-     unsigned char i, ucAddr;
-     unsigned char ucResult=0;
+	unsigned char i, ucAddr;
+	unsigned char ucResult=0;
 
-     NSS_L;
-     ucAddr = ((Address<<1)&0x7E)|0x80;
+	if(nfc_work_mode==1)
+	{
+		NSS1_L;
+		NSS2_H;
+	}
+	else
+	{
+		NSS2_L;
+		NSS1_H;
+	}
+    //NSS_L;
+	
+	ucAddr = ((Address<<1)&0x7E)|0x80;
 
-     for(i=8;i>0;i--)
-     {
-         SCK_L;
-	 	 if(ucAddr&0x80)
-         	MOSI_H;
-		 else
-				 MOSI_L;
-         SCK_H;
-         ucAddr <<= 1;
-     }
+	for(i=8;i>0;i--)
+	{
+		SCK_L;
+		if(ucAddr&0x80)
+			MOSI_H;
+		else
+			 MOSI_L;
+		SCK_H;
+		ucAddr <<= 1;
+	}
 
-     for(i=8;i>0;i--)
-     {
-         SCK_L;
-         ucResult <<= 1;
-         SCK_H;
-		 if(READ_MISO == 1)
-         	ucResult |= 1;
-     }
+	for(i=8;i>0;i--)
+	{
+		SCK_L;
+		ucResult <<= 1;
+		SCK_H;
+		if(READ_MISO == 1)
+			ucResult |= 1;
+	}
+	 
+	if(nfc_work_mode==1)
+	{
+		NSS1_H;
+		NSS2_H;
+	}
+	else
+	{
+		NSS2_H;
+		NSS1_H;
+	}
 
-     NSS_H;
+	//NSS_H;
      SCK_H;
      return ucResult;
 }
@@ -397,7 +422,20 @@ void WriteRawRC(unsigned char Address, unsigned char value)
     unsigned char i, ucAddr;
 
     SCK_L;
-    NSS_L;
+	
+	if(nfc_work_mode==1)
+	{
+		NSS1_L;
+		NSS2_H;
+	}
+	else
+	{
+		NSS2_L;
+		NSS1_H;
+	}
+    //NSS_L;
+	
+	
     ucAddr = ((Address<<1)&0x7E);
 
     for(i=8;i>0;i--)
@@ -421,7 +459,19 @@ void WriteRawRC(unsigned char Address, unsigned char value)
         value <<= 1;
         SCK_L;
     }
-    NSS_H;
+	
+	if(nfc_work_mode==1)
+	{
+		NSS1_H;
+		NSS2_H;
+	}
+	else
+	{
+		NSS2_H;
+		NSS1_H;
+	}
+	
+    //NSS_H;
     SCK_H;
 }
 

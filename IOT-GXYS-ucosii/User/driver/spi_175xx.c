@@ -12,12 +12,12 @@
 #include "led_app.h"
 #include "wtn6170.h"
 #include "gprs_protocol_app.h"
+
 /************************************************
 函数名称 ： ShowID
 功    能 ： 打印设备ID
 参    数 ： 无
 返 回 值 ： 无
-作    者 ： strongerHuang
 *************************************************/
 void ShowID(uint8_t *p)	 //显示卡的卡号，以十六进制显示
 {
@@ -84,12 +84,11 @@ void spi_nfc_read_func(void)
 功    能 ： SPI初始化
 参    数 ： 无
 返 回 值 ： 无
-作    者 ： strongerHuang
 *************************************************/
 void spi_nfc_init(void)
-{
-  spi_nfc_gpio_init();
-  spi_nfc_mode_config();
+{	
+	spi_nfc_gpio_init();
+	spi_nfc_mode_config();
 	InitializeSystem();
 }
 /************************************************
@@ -97,7 +96,6 @@ void spi_nfc_init(void)
 功    能 ： 
 参    数 ： 无
 返 回 值 ： 无
-作    者 ： strongerHuang
 *************************************************/
 void InitializeSystem(void)
 {
@@ -123,7 +121,6 @@ void InitializeSystem(void)
             8位数据格式，软件控制片选，数据高位在前
 参    数 ： 无
 返 回 值 ： 无
-作    者 ： strongerHuang
 *************************************************/
 void spi_nfc_mode_config(void)
 {
@@ -149,7 +146,6 @@ void spi_nfc_mode_config(void)
 功    能 ： SPI引脚配置
 参    数 ： 无
 返 回 值 ： 无
-作    者 ： strongerHuang
 *************************************************/
 void spi_nfc_gpio_init(void)
 {
@@ -157,13 +153,6 @@ void spi_nfc_gpio_init(void)
 
 	/* Enable the GPIO Clock */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB|RCC_AHBPeriph_GPIOA, ENABLE);
-
-	/* Configure the GPIO pin 复位引脚 PB6*/
-	GPIO_InitStructure.GPIO_Pin = SPI1_NFC_RST_PIN;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                     //推完输出
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-	GPIO_Init(SPI1_NFC_RST_PORT, &GPIO_InitStructure);
 
 	/* Configure the GPIO pin MISO引脚 PB5*/
 	GPIO_InitStructure.GPIO_Pin = SPI1_NFC_MISO_PIN;
@@ -186,15 +175,17 @@ void spi_nfc_gpio_init(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(SPI1_NFC_SCK_PORT, &GPIO_InitStructure);
 
-
-
-	/* Configure the GPIO pin NSS片选引脚 PA15*/
-	GPIO_InitStructure.GPIO_Pin = SPI1_NFC_NSS_PIN;
+	/* Configure the GPIO pin NSS1片选引脚 PA15*/
+	GPIO_InitStructure.GPIO_Pin = SPI1_NFC_NSS1_PIN;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-	//	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                     //推完输出
+	//	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                 //推完输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-	GPIO_Init(SPI1_NFC_NSS_PORT, &GPIO_InitStructure);
+	GPIO_Init(SPI1_NFC_NSS1_PORT, &GPIO_InitStructure);
 	
-
-	
+	/*  Configure the GPIO pin NSS2片选引脚 PB6*/
+	GPIO_InitStructure.GPIO_Pin = SPI1_NFC_NSS2_PIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;                     //推完输出
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_Init(SPI1_NFC_NSS2_PORT, &GPIO_InitStructure);
 }

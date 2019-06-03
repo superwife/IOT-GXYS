@@ -12,6 +12,8 @@
 #include "ucos_ii.h"
 #include "led_app.h"
 
+OS_EVENT *sim_4g_sem;										
+
 /* 私有变量 ------------------------------------------------------------------*/
 /* 变量 ----------------------------------------------------------------------*/
 static  OS_STK   App_Task_LED1_Stk[APP_TASK_LED1_STK_SIZE];
@@ -40,9 +42,11 @@ int main(void)
     INT8U os_err;
     OSInit();
     OS_CPU_SysTickInit();
-	iwdg_init();
+	//iwdg_init();
 	LED_Configuration ();
 	USART_Initializes();
+	
+	sim_4g_sem = OSSemCreate(1);								//创建信号量
     
 //    //创建LED1闪烁的任务
 //    os_err = OSTaskCreate( App_Task_LED1,

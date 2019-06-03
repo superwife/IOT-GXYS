@@ -145,4 +145,3 @@ void USART1_Printf(uint8_t *String)
   USART1_SendByte(0x0A);
 }
 
-

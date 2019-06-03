@@ -35,7 +35,7 @@ enum BOARD_TYPE
 };
 
 
-void sim7600_flaga_deal(uint8_t *data,uint16_t len);
+void sim7600_data_deal(uint8_t *data,uint16_t len);
 void gprs_protocol_data_send(uint8_t taget, uint8_t id, uint8_t *data, uint16_t len);
 void sim7600_reply_pickup_data(uint8_t etype);
 void sim7600_reply_unlocking_data(uint8_t etype);
@@ -45,6 +45,10 @@ void sim7600_reply_add_data(uint8_t etype);
 void sim7600_send_umbrella_data(uint8_t *data,uint8_t len);
 void sim7600_send_lifesignal_data(uint8_t life_cnt);
 void sim7600_send_register_data(uint8_t *data,uint8_t len);
+
+void sim7600_stat_check(void);
+void protocol_deal(uint8_t *data);
+
 
 
 #endif

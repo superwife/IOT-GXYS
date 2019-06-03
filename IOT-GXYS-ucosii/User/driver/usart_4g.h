@@ -8,9 +8,15 @@
 #define USART_4G_STATUS_STAT    GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1)
 #define DMA_DATA_LEN	64
 
+#define POWER_4G_PORT 			GPIOA
+#define POWER_4G_PIN			GPIO_Pin_0
+#define POWER_4G_CLK            RCC_AHBPeriph_GPIOA 
+
+#define POWER_4G_ON				GPIO_SetBits(POWER_4G_PORT, POWER_4G_PIN)	
+#define POWER_4G_OFF			GPIO_ResetBits(POWER_4G_PORT, POWER_4G_PIN)
 
 /*------- public para ---------*/
-struct sim7600_flag_ST{
+struct sim7600_flag_st{
 	uint8_t config_sim7600_flag;
 	uint8_t sim7600_work_flag;
 	uint8_t sim7600_status_flag;
@@ -27,7 +33,7 @@ void usart_4g_send_data(uint8_t *data,uint32_t len);
 void sim7600ce_config(void);
 void usart_dma_init(void);
 void NVIC_Configuration(void);
-void sim7600_flaga_init(void);
+void sim7600_flag_init(void);
 
 /*------- AT 4G CMD ---------*/
 void AT_TEST(void);

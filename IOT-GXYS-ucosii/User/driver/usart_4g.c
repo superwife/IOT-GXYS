@@ -15,7 +15,7 @@
 uint8_t  DMA_Tx_Buf[DMA_DATA_LEN];
 uint8_t  DMA_Rx_Buf[DMA_DATA_LEN];
 
-struct sim7600_flag_ST sim7600_flag;
+struct sim7600_flag_st sim7600_flag;
 
 
 /************************************************
@@ -28,7 +28,8 @@ void usart_4g_init(void)
 {
 	usart_4g_gpio_init();
 	usart_4g_config(115200);
-	sim7600_flaga_init();
+	sim7600_flag_init();
+
 }
 /************************************************
 函数名称 ： sim7600_flaga_init
@@ -36,10 +37,10 @@ void usart_4g_init(void)
 参    数 ： 无
 返 回 值 ： 无
 *************************************************/
-void sim7600_flaga_init(void)
+void sim7600_flag_init(void)
 {
 	sim7600_flag.config_sim7600_flag   = 0;			//4g模块配置标志
-	sim7600_flag.sim7600_work_flag 	  = 0;			//4g模块工作标志
+	sim7600_flag.sim7600_work_flag 	   = 0;			//4g模块工作标志
 	sim7600_flag.sim7600_status_flag   = 0;			//4g模块status状态标志
 	sim7600_flag.sim7600_register_flag = 0;			//4g模块注册状态
 }
@@ -59,7 +60,15 @@ void usart_4g_gpio_init(void)
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;            				//引脚
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;                       	//输入模式
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;                  	//高速
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	GPIO_Init(GPIOA, &GPIO_InitStructure);	
+	
+	/* Configure the GPIO pin 电源控制	PA0*/
+	GPIO_InitStructure.GPIO_Pin = POWER_4G_PIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_Init(POWER_4G_PORT, &GPIO_InitStructure);
+	
+	POWER_4G_ON;
 }
 /************************************************
 函数名称 ： usart_4g_gpio_init
@@ -288,7 +297,7 @@ void AT_CIPRXGET(void)
 *************************************************/
 void AT_CIPOPEN(void)											
 {
-	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n"));
+	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"111.67.206.112\",40035\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"111.67.206.112\",40035\r\n"));
 }
 /************************************************
 函数名称 ： AT_CHECK_CIPOPEN
@@ -403,7 +412,7 @@ void USART2_IRQHandler(void)
 //			printf("%x ",DMA_Rx_Buf[i]);
 //		}
 //		printf("\r\n");	
-		sim7600_flaga_deal(DMA_Rx_Buf,dma_len);
+		sim7600_data_deal(DMA_Rx_Buf,dma_len);
 		memset(DMA_Rx_Buf,0,sizeof(DMA_Rx_Buf));
 		/* set dma send_len ,the dma_receive buff will be clear automatically*/
 		DMA_SetCurrDataCounter(DMA1_Channel5,DMA_DATA_LEN);  						

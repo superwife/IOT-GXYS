@@ -20,3 +20,8 @@
 .\output\sec_app.o: ..\User\driver\spi_flash.h
 .\output\sec_app.o: ..\User\driver\wtn6170.h
 .\output\sec_app.o: ..\User\driver\motor_ctrl.h
+.\output\sec_app.o: ..\User\driver\usart_4g.h
+.\output\sec_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_usart.h
+.\output\sec_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dma.h
+.\output\sec_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
+.\output\sec_app.o: ..\User\app\gprs_protocol_app.h

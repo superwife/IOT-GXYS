@@ -9,6 +9,19 @@
 #include "led_app.h"
 
 /************************************************
+函数名称 ： make_buzzer_sound
+功    能 ： 蜂鸣器响
+参    数 ： 秒计数响
+返 回 值 ： 无
+*************************************************/
+void make_buzzer_sound(void)
+{
+	BUZZER_ON;
+	OSTimeDly(500);
+	BUZZER_OFF;
+}
+
+/************************************************
 函数名称 ： wtn6170_gpio_init
 功    能 ： 初始化语音芯片引脚
 参    数 ： 无
@@ -18,30 +31,19 @@ void wtn6170_gpio_init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	
-    RCC_AHBPeriphClockCmd(WTN_BUSY_CLK|WTN_DATA_CLK, ENABLE);
-	//PB1
-	GPIO_InitStructure.GPIO_Pin = WTN_BUSY_PIN;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-    GPIO_Init(WTN_BUSY_PORT, &GPIO_InitStructure);
-	
-	//PB0
-	GPIO_InitStructure.GPIO_Pin = WTN_DATA_PIN;
+    RCC_AHBPeriphClockCmd(WTN_DATA_CLK, ENABLE);
+
+	//PA7
+	GPIO_InitStructure.GPIO_Pin = WTN_DATA_PIN|BUZZER_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_Init(WTN_DATA_PORT, &GPIO_InitStructure);
-	
-	//PA7
-	GPIO_InitStructure.GPIO_Pin = WTN_CLK_PIN;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-    GPIO_Init(WTN_CLK_PORT, &GPIO_InitStructure);
-	
+
 	WTN_DATA_L;
 	WTN_DATA_H;
+	
+	BUZZER_OFF;
 }
 /************************************************
 函数名称 ： wtn_send_data
