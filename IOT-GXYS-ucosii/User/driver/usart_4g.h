@@ -12,8 +12,8 @@
 #define POWER_4G_PIN			GPIO_Pin_0
 #define POWER_4G_CLK            RCC_AHBPeriph_GPIOA 
 
-#define POWER_4G_ON				GPIO_SetBits(POWER_4G_PORT, POWER_4G_PIN)	
-#define POWER_4G_OFF			GPIO_ResetBits(POWER_4G_PORT, POWER_4G_PIN)
+#define POWER_4G_ON				GPIO_ResetBits(POWER_4G_PORT, POWER_4G_PIN)	
+#define POWER_4G_OFF			GPIO_SetBits(POWER_4G_PORT, POWER_4G_PIN)
 
 /*------- public para ---------*/
 struct sim7600_flag_st{

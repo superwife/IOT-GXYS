@@ -6,6 +6,7 @@
 /* ÀΩ”–∫Í∂®“Â ----------------------------------------------------------------*/
 #define SYS_LED         GPIO_Pin_12
 #define ALM_LED         GPIO_Pin_11
+#define SYS_LIGHT		GPIO_Pin_7
 
 #define LED_PORT        GPIOA
 #define LED_GPIO_CLK    RCC_AHBPeriph_GPIOA

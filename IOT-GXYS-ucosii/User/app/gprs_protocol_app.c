@@ -22,14 +22,13 @@ void  App_Task_4G(void* p_arg);
 
 
 /*------------------ public para ---------------------*/
-uint16_t sim7600_connt_err_cnt=0;
-
 uint8_t cmd_data[DMA_DATA_LEN]={0};
 
 /*------------------ extern para ---------------------*/
 extern struct sim7600_flag_st sim7600_flag;
 extern struct REGISTER_INFO_ST register_info;
 extern struct spi_data_info_st spi_info;
+extern uint32_t sim7600_connt_err_cnt;
 extern uint8_t nfc_work_mode;									//定义nfc工作模式，1：借伞模式，0：添伞模式
 extern OS_EVENT *sim_4g_sem;									//4g通信信号量
 
@@ -49,12 +48,6 @@ void  App_Task_4G(void* p_arg)
 		OSSemPend(sim_4g_sem, 0, &err);
 		printf("recv sim data\r\n");
 		protocol_deal(cmd_data);
-		
-//		sim7600_connt_err_cnt++;								//4g连接异常处理
-//		if(sim7600_connt_err_cnt>50)		
-//		{
-//			sim7600_flag.sim7600_work_flag = 0;					
-//		}
 		OSTimeDly(200);
 	}
 }
@@ -162,14 +155,14 @@ void protocol_deal(uint8_t *data)
 						for(i=0;i<UNLOCK_TIME_OUT_CNT*5;i++)
 						{
 							OSTimeDly(200);
-							if(BOOK_TRAVEL_SW_CHECK==0)
+							if(BOOK_INFRA_RX_CHECK==0)
 							{
 								delay_us(2);
-								if(BOOK_TRAVEL_SW_CHECK==0)
+								if(BOOK_INFRA_RX_CHECK==0)
 								{
 									wtn_send_data(BOOK_SUCCESS);					//语音提示
 									sim7600_reply_unlocking_data(CONFIRM_OK);		//确认开锁成功
-									OSTimeDly(2000);
+									OSTimeDly(500);
 									unlocking_ctrl(BOOK_LOCK,LOCK_OFF);				//关锁
 									printf("unlock BOOK_LOCK success\r\n");
 									return;
@@ -186,14 +179,14 @@ void protocol_deal(uint8_t *data)
 						for(i=0;i<UNLOCK_TIME_OUT_CNT*5;i++)						//超时检测
 						{
 							OSTimeDly(200);
-							if(RETURN_TRAVEL_SW_CHECK==0)
+							if(RETURN_INFRA_RX_CHECK==0)
 							{
 								delay_us(2);
-								if(RETURN_TRAVEL_SW_CHECK==0)
+								if(RETURN_INFRA_RX_CHECK==0)
 								{
 									wtn_send_data(BOOK_SUCCESS);					//语音提示
 									sim7600_reply_unlocking_data(CONFIRM_OK);		//确认开锁成功
-									OSTimeDly(2000);
+									OSTimeDly(500);
 									unlocking_ctrl(RETURN_LOCK,LOCK_OFF);			//关锁
 									printf("unlock RETURN_LOCK success\r\n");
 									return;
@@ -206,9 +199,21 @@ void protocol_deal(uint8_t *data)
 						break;
 					case 0x03:
 						printf("recv UNLOCKING_ADD_LOCK_CMD\r\n");					//开添伞锁
-						unlocking_ctrl(BOOK_LOCK,LOCK_ON);							//开锁
-						wtn_send_data(BOOK_SUCCESS);								//语音提示
-						sim7600_reply_unlocking_data(CONFIRM_OK);					//确认开锁成功
+						for(i=0;i<3;i++)
+						{
+							unlocking_ctrl(ADD_LOCK,LOCK_ON);						//开锁
+							OSTimeDly(200);
+							if(DOOR_LOCK_CHECK==1)
+							{
+								unlocking_ctrl(ADD_LOCK,LOCK_ON);					//开锁
+								wtn_send_data(BOOK_SUCCESS);						//语音提示
+								sim7600_reply_unlocking_data(CONFIRM_OK);			//确认开锁成功
+								unlocking_ctrl(ADD_LOCK,LOCK_OFF);					//关锁
+								return;
+							}
+						}
+						sim7600_reply_unlocking_data(UNLOCKING_ERR);				//确认开锁成功
+						unlocking_ctrl(ADD_LOCK,LOCK_OFF);							//关锁
 						break;
 					default:
 						

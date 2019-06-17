@@ -1,34 +1,44 @@
 #ifndef _MOTOR_CTRL_H_
 #define _MOTOR_CTRL_H_
 
-#define UNLOCK_TIME_OUT_CNT			5
+#define UNLOCK_TIME_OUT_CNT			8
 
-//定义借伞电机控制
-#define BOOK_TRAVEL_SW_PIN  		GPIO_Pin_9
-#define BOOK_MOTOR_EN_PIN	        GPIO_Pin_8
-#define BOOK_DATA_PORT        		GPIOB
-#define BOOK_DATA_CLK    	 		RCC_AHBPeriph_GPIOB
+/************ 定义借伞、还伞、开门电机控制 *****************/
+#define BOOK_MOTOR_PIN	        	GPIO_Pin_7
+#define RETURN_MOTOR_PIN			GPIO_Pin_8
+#define DOOR_MOTOR_PIN				GPIO_Pin_9
+#define DOOR_STAT_CHECK_PIN			GPIO_Pin_0
 
-#define BOOK_TRAVEL_SW_CHECK     	GPIO_ReadInputDataBit(BOOK_DATA_PORT, BOOK_TRAVEL_SW_PIN)
-#define BOOK_MOTOR_RUN				GPIO_SetBits(BOOK_DATA_PORT, BOOK_MOTOR_EN_PIN)
-#define BOOK_MOTOR_STOP				GPIO_ResetBits(BOOK_DATA_PORT, BOOK_MOTOR_EN_PIN)
+#define MOTOR_DATA_PORT        		GPIOB
+#define MOTOR_DATA_CLK    	 		RCC_AHBPeriph_GPIOB
+//借伞电机
+#define BOOK_MOTOR_RUN				GPIO_SetBits(MOTOR_DATA_PORT, BOOK_MOTOR_PIN)
+#define BOOK_MOTOR_STOP				GPIO_ResetBits(MOTOR_DATA_PORT, BOOK_MOTOR_PIN)
+//还伞电机
+#define RETURN_MOTOR_RUN			GPIO_SetBits(MOTOR_DATA_PORT, RETURN_MOTOR_PIN)
+#define RETURN_MOTOR_STOP			GPIO_ResetBits(MOTOR_DATA_PORT, RETURN_MOTOR_PIN)
+//开门锁
+#define DOOR_MOTOR_RUN				GPIO_SetBits(MOTOR_DATA_PORT, DOOR_MOTOR_PIN)
+#define DOOR_MOTOR_STOP				GPIO_ResetBits(MOTOR_DATA_PORT, DOOR_MOTOR_PIN)
+//检测开门状态
+#define DOOR_LOCK_CHECK     		GPIO_ReadInputDataBit(INFRA_RX_POART, BOOK_INFRA_RX_PIN)
 
-//定义还伞电机控制相关定义
-#define RETURN_TRAVEL_SW_PIN  		GPIO_Pin_5
-#define RETURN_MOTOR_EN_PIN	        GPIO_Pin_4
-#define RETURN_DATA_PORT        	GPIOA
-#define RETURN_DATA_CLK    	 		RCC_AHBPeriph_GPIOA
+/****************** 定义红外信号检测检测 *********************/
+#define BOOK_INFRA_RX_PIN  			GPIO_Pin_4
+#define RETURN_INFRA_RX_PIN  		GPIO_Pin_5
 
-#define RETURN_TRAVEL_SW_CHECK      GPIO_ReadInputDataBit(RETURN_DATA_PORT, RETURN_TRAVEL_SW_PIN)
-#define RETURN_MOTOR_RUN			GPIO_SetBits(RETURN_DATA_PORT, RETURN_MOTOR_EN_PIN)
-#define RETURN_MOTOR_STOP			GPIO_ResetBits(RETURN_DATA_PORT, RETURN_MOTOR_EN_PIN)
+#define INFRA_RX_POART    	 		GPIOA
+#define INFRA_RX_DATA_CLK    	 	RCC_AHBPeriph_GPIOA
+
+#define BOOK_INFRA_RX_CHECK     	GPIO_ReadInputDataBit(INFRA_RX_POART, BOOK_INFRA_RX_PIN)
+#define RETURN_INFRA_RX_CHECK      	GPIO_ReadInputDataBit(INFRA_RX_POART, RETURN_INFRA_RX_PIN)
 
 
 /******** 开锁类型 ********/
 typedef enum {
-	BOOK_LOCK,						//借伞锁
-	RETURN_LOCK,					//还伞锁
-	ADD_LOCK						//添伞锁
+	BOOK_LOCK   = 0x01,				//借伞锁
+	RETURN_LOCK = 0x02,				//还伞锁
+	ADD_LOCK	= 0x03				//添伞锁
 }LOCK_TYPE;
 /******** 开关类型 ********/
 typedef enum {

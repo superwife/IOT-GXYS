@@ -68,7 +68,7 @@ void usart_4g_gpio_init(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(POWER_4G_PORT, &GPIO_InitStructure);
 	
-	POWER_4G_ON;
+	POWER_4G_ON;														//
 }
 /************************************************
 函数名称 ： usart_4g_gpio_init
@@ -297,7 +297,7 @@ void AT_CIPRXGET(void)
 *************************************************/
 void AT_CIPOPEN(void)											
 {
-	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"111.67.206.112\",40035\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"111.67.206.112\",40035\r\n"));
+	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n"));
 }
 /************************************************
 函数名称 ： AT_CHECK_CIPOPEN
@@ -308,6 +308,16 @@ void AT_CIPOPEN(void)
 void AT_CHECK_CIPOPEN(void)											
 {
 	usart_4g_send_data("AT+CIPOPEN?\r\n",sizeof("AT+CIPOPEN?\r\n"));
+}
+/************************************************
+函数名称 ： AT_CIPSHUT
+功    能 ：	关闭移动环境
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void AT_CIPSHUT(void)											
+{
+	usart_4g_send_data("AT+CIPSHUT\r\n",sizeof("AT+CIPSHUT\r\n"));
 }
 /************************************************
 函数名称 ： AT_ATE
@@ -349,6 +359,8 @@ void usart_4g_send_data(uint8_t *data,uint32_t len)
 void sim7600ce_config(void)
 {
 	printf("start sim7600ce_config...\r\n");	
+	AT_NETCLOSE();
+	OSTimeDly(1000);
 	AT_CGDCONT();
 	OSTimeDly(1000);
 	AT_CIPMODE();

@@ -20,35 +20,28 @@ void signal_motro_gpio_init(void)
 	GPIO_InitTypeDef GPIO_InitStructure;
     
     //使能电机所在GPIO的时钟
-    RCC_AHBPeriphClockCmd(BOOK_DATA_CLK|RETURN_DATA_CLK, ENABLE);
+    RCC_AHBPeriphClockCmd(MOTOR_DATA_CLK|INFRA_RX_DATA_CLK, ENABLE);
 
-    //初始化借伞MOTOR的GPIO PB8 控制开关
-    GPIO_InitStructure.GPIO_Pin = BOOK_MOTOR_EN_PIN;
+    //初始化借伞、还伞、开门MOTOR的GPIO PB7/PB8/PB9 控制开关
+    GPIO_InitStructure.GPIO_Pin = BOOK_MOTOR_PIN|RETURN_MOTOR_PIN|DOOR_MOTOR_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-    GPIO_Init(BOOK_DATA_PORT, &GPIO_InitStructure);
+    GPIO_Init(MOTOR_DATA_PORT, &GPIO_InitStructure);
 	
-	//初始化借伞行程开关GPIO PB9 确认是否动作IO
-    GPIO_InitStructure.GPIO_Pin = BOOK_TRAVEL_SW_PIN;
+	//初始化开门开关GPIO PB0 确认是否动作IO
+    GPIO_InitStructure.GPIO_Pin = DOOR_STAT_CHECK_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
-    GPIO_Init(BOOK_DATA_PORT, &GPIO_InitStructure);
+    GPIO_Init(MOTOR_DATA_PORT, &GPIO_InitStructure);
 	
-	//初始化还伞MOTOR的GPIO PA4 控制开关
-    GPIO_InitStructure.GPIO_Pin = RETURN_MOTOR_EN_PIN;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	//初始化红外检测的GPIO PA4/PB5 确认是否动作IO
+    GPIO_InitStructure.GPIO_Pin = BOOK_INFRA_RX_PIN|RETURN_INFRA_RX_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-    GPIO_Init(RETURN_DATA_PORT, &GPIO_InitStructure);
-	
-	//初始化还伞的行程开关GPIO PA5 确认是否动作IO
-    GPIO_InitStructure.GPIO_Pin = RETURN_TRAVEL_SW_PIN;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;	
-    GPIO_Init(RETURN_DATA_PORT, &GPIO_InitStructure);
+    GPIO_Init(INFRA_RX_POART, &GPIO_InitStructure);
 }
 /************************************************
 函数名称 ： single_motor_test
@@ -59,7 +52,7 @@ void signal_motro_gpio_init(void)
 void single_motor_test(void)
 {
 	BOOK_MOTOR_RUN;
-	if(BOOK_TRAVEL_SW_CHECK==1)
+	if(BOOK_INFRA_RX_PIN==1)
 	{
 		led_ctrl_func(ALM_LED,1);
 	}
@@ -102,7 +95,14 @@ void unlocking_ctrl(LOCK_TYPE etpye,LOCK_ON_OFF_TYPE CTRL_CMD)
 			}
 			break;
 		case ADD_LOCK:										//添伞锁
-			
+			if(CTRL_CMD==LOCK_ON)
+			{
+				DOOR_MOTOR_RUN;
+			}
+			else
+			{
+				DOOR_MOTOR_STOP;
+			}
 			break;
 		default:
 			break;

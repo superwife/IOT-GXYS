@@ -57,25 +57,6 @@
 #define NSS2_L                           GPIO_ResetBits(SPI1_NFC_NSS2_PORT, SPI1_NFC_NSS2_PIN)
 #define READ_MISO                        GPIO_ReadInputDataBit(SPI1_NFC_MISO_PORT, SPI1_NFC_MISO_PIN)
 
-//4G电源开关
-//#define POWER_4G_PORT 					 GPIOA
-//#define POWER_4G_PIN					 GPIO_Pin_0
-//#define POWER_4G_CLK            		 RCC_AHBPeriph_GPIOA 
-
-//#define POWER_4G_ON						 GPIO_SetBits(POWER_4G_PORT, POWER_4G_PIN)	
-//#define POWER_4G_OFF					 GPIO_ResetBits(POWER_4G_PORT, POWER_4G_PIN)
-
-
-//确认NFC读写模式
-//#define NFC_WORK_MODE					 0
-//#if NFC_WORK_MODE						 	
-//	#define NSS_H                 	     NSS1_H	
-//	#define NSS_L                        NSS1_L
-//#else
-//	#define NSS_H                 	     NSS2_H	
-//	#define NSS_L                        NSS2_L
-//#endif
-
 void spi_nfc_gpio_init(void);
 void spi_nfc_mode_config(void);
 void spi_nfc_init(void);

@@ -40,13 +40,13 @@ void LED_Configuration(void)
     RCC_AHBPeriphClockCmd(LED_GPIO_CLK, ENABLE);
 
     //³õÊ¼»¯LEDµÄGPIO PA11\PA12
-    GPIO_InitStructure.GPIO_Pin = SYS_LED | ALM_LED;
+    GPIO_InitStructure.GPIO_Pin = SYS_LED | ALM_LED|SYS_LIGHT;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_Init(LED_PORT, &GPIO_InitStructure);
     
-    GPIO_ResetBits(LED_PORT,SYS_LED | ALM_LED);  //Ï¨ÃðLED3-4
+    GPIO_ResetBits(LED_PORT,SYS_LED | ALM_LED |SYS_LIGHT);  //Ï¨ÃðLED3-4
 }
 
 /************************************************

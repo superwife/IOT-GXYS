@@ -33,12 +33,19 @@ void wtn6170_gpio_init(void)
 	
     RCC_AHBPeriphClockCmd(WTN_DATA_CLK, ENABLE);
 
-	//PA7
-	GPIO_InitStructure.GPIO_Pin = WTN_DATA_PIN|BUZZER_PIN;
+	//PB1
+	GPIO_InitStructure.GPIO_Pin = WTN_DATA_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_Init(WTN_DATA_PORT, &GPIO_InitStructure);
+	
+	//PA6
+	GPIO_InitStructure.GPIO_Pin = BUZZER_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+    GPIO_Init(BUZZER_PORT, &GPIO_InitStructure);
 
 	WTN_DATA_L;
 	WTN_DATA_H;

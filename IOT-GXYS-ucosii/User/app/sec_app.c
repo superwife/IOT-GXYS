@@ -20,7 +20,7 @@
 
 /*------------------ public para ---------------------*/
 uint8_t nfc_work_mode = 1;									//定义nfc工作模式，1：借伞模式，0：添伞模式
-
+uint32_t sim7600_connt_err_cnt = 0;
 /*------------------ private func ---------------------*/
 void  App_Task_SEC(void* p_arg);
 
@@ -67,14 +67,28 @@ void  App_Task_SEC(void* p_arg)
 		if(delay_i%5==0)
 		{
 			led_ctrl_func(SYS_LED,delay_i%2);
-			printf("wait for id card %d...\r\n",nfc_work_mode);
+			printf("nfc = %d wait for id card ,sim7600_connt_err_cnt = %d\r\n",nfc_work_mode,sim7600_connt_err_cnt);
 			system_clock++;
+			sim7600_connt_err_cnt++;								//4g连接异常计数
 			sim7600_stat_check();
 		}	
 		/********* nfc识别 ***********/
-		spi_nfc_read_func();	
+		if(delay_i%1==0)
+		{
+			if(nfc_work_mode==1)
+			{
+				nfc_work_mode = 0;
+			}
+			else
+			{
+				nfc_work_mode = 1;
+			}
+			spi_nfc_read_func();
+		}
+			
+		
 		/***** 4g模块状态监测 ********/	
-		if(sim7600_flag.sim7600_work_flag&&(delay_i%30==0))	//如果4g模块正常工作，那么开始注册，或者发送生命信号
+		if(sim7600_flag.sim7600_work_flag&&(delay_i%30==0))			//如果4g模块正常工作，那么开始注册，或者发送生命信号
 		{		
 			if(sim7600_flag.sim7600_register_flag==0)
 			{
@@ -85,6 +99,13 @@ void  App_Task_SEC(void* p_arg)
 				sim7600_send_lifesignal_data(system_clock);
 			}
 		}	
+		/***** 4g通信超时异常检测 ****/	
+		if(sim7600_connt_err_cnt>120)		
+		{
+			sim7600_flag.sim7600_work_flag = 0;	
+			sim7600_connt_err_cnt = 0;			
+		}
+		
 		OSTimeDly(200);
 	}
 }

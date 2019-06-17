@@ -5,15 +5,14 @@
 #include "stm32f0xx.h"
 #include "ucos_ii.h"
 
-#define WTN_DATA_PIN             GPIO_Pin_7  
-#define WTN_DATA_PORT            GPIOA
-#define WTN_DATA_CLK             RCC_AHBPeriph_GPIOA
+#define WTN_DATA_PIN             GPIO_Pin_1  
+#define WTN_DATA_PORT            GPIOB
+#define WTN_DATA_CLK             RCC_AHBPeriph_GPIOB
 
 #define BUZZER_PIN				 GPIO_Pin_6  
 #define BUZZER_PORT            	 GPIOA
 #define BUZZER_CLK               RCC_AHBPeriph_GPIOA
   
-
 #define WTN_DATA_H              GPIO_SetBits(WTN_DATA_PORT, WTN_DATA_PIN)
 #define WTN_DATA_L              GPIO_ResetBits(WTN_DATA_PORT, WTN_DATA_PIN)
 
