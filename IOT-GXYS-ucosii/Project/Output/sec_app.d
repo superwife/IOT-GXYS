@@ -25,3 +25,4 @@
 .\output\sec_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dma.h
 .\output\sec_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
 .\output\sec_app.o: ..\User\app\gprs_protocol_app.h
+.\output\sec_app.o: ..\User\app\ptu_app.h

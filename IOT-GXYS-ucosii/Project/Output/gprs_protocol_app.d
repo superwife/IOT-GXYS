@@ -23,3 +23,5 @@
 .\output\gprs_protocol_app.o: ..\User\driver\wtn6170.h
 .\output\gprs_protocol_app.o: ..\User\driver\led_app.h
 .\output\gprs_protocol_app.o: ..\User\driver\spi_flash.h
+.\output\gprs_protocol_app.o: ..\User\app\nfc_app.h
+.\output\gprs_protocol_app.o: ..\User\driver\spi_175xx.h

@@ -9,9 +9,9 @@
 	块数：	16 block
 ***********************************************/
 
-#define DEVICE_CODE_INFO	"20190527000000001"
-#define SOFTWARE_VERSION	1000
-#define HARDWARE_VERSION	1000
+#define DEVICE_CODE_INFO	"1511010600000001"
+#define SOFTWARE_VERSION	"V1.0.0"
+#define HARDWARE_VERSION	"V1.0.0"
 
 
 /*------------------ W25Q80内存信息 -------------------*/
@@ -33,10 +33,10 @@
 
 
 /*-------------- spi存储伞信息框架信息 -----------------------*/
-#define DEVICE_SPI_INFO_SAVE_SECTOR			1			//存储设备扇区
-#define DEVICE_SPI_INFO_SAVE_PAGE			17			//存储设备信息页
-#define DEVICE_SPI_FLASH_INFO_PAGE_BEGIN 	17			//存储设备信息开始页
-#define DEVICE_SPI_FLASH_INFO_PAGE_END 		32			//存储设备信息结束页
+#define DEVICE_UMB_INFO_SAVE_SECTOR			1			//存储设备扇区
+#define DEVICE_UMB_INFO_SAVE_PAGE			17			//存储设备信息页
+#define DEVICE_UMB_FLASH_INFO_PAGE_BEGIN 	17			//存储设备信息开始页
+#define DEVICE_UMB_FLASH_INFO_PAGE_END 		32			//存储设备信息结束页
 
 /*-------------- spi存储设备框架信息 -----------------------*/
 #define DEVICE_CODE_INFO_SECTOR				2			//存储设备扇区
@@ -54,9 +54,16 @@ struct spi_data_info_st{
 /*--------- 设备信息 --------*/
 struct REGISTER_INFO_ST{
 	uint8_t dev_code[18];			//设备编码
-	uint16_t software_version;		//软件版本
-	uint16_t hardware_version;		//硬件版本
+	uint8_t software_version[7];	//软件版本
+	uint8_t hardware_version[7];	//硬件版本
 };
+
+/*--------- 设备IP信息--------*/
+struct SYS_TCPIP_INFO_ST{
+	uint8_t ip[4];					//设备IP地址
+	uint16_t port;					//设备端口号
+};
+
 
 /* 宏定义 --------------------------------------------------------------------*/
 #define SFLASH_CS_ENABLE          GPIO_ResetBits(GPIOB,GPIO_Pin_12)
@@ -67,8 +74,10 @@ void spi_flash_gpio_init(void);
 void spi_flash_config(void);
 uint8_t SPI_WriteReadByte(uint8_t TxData);
 void spiflash_test(void);
-void get_umbrella_info(uint8_t *data,uint8_t len);
+void get_umbrella_info(void);
 void update_umbrella_info(uint8_t *data,uint8_t len);
-void get_device_info(uint8_t *data,uint8_t len);
+void get_device_info(void);
+
+void update_device_info(void);
 
 #endif

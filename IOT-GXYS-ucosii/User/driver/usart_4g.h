@@ -5,6 +5,8 @@
 #include "stm32f0xx_dma.h"
 #include "stm32f0xx_misc.h"
 
+#define SIM_4G_IP_HEAD			""
+
 #define USART_4G_STATUS_STAT    GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1)
 #define DMA_DATA_LEN	64
 
@@ -21,6 +23,8 @@ struct sim7600_flag_st{
 	uint8_t sim7600_work_flag;
 	uint8_t sim7600_status_flag;
 	uint8_t sim7600_register_flag;
+	uint8_t sys_restart_flag;
+	uint8_t reconnect_cnt;
 };
 
 /*------- public func ---------*/
@@ -47,6 +51,7 @@ void AT_CIPOPEN(void);
 void AT_CHECK_CIPOPEN(void);
 void AT_ATE(void);
 void AT_ATO(void);
+void atopen_cmd_turn(char *at_cmd,uint8_t *data_ip,uint16_t data_port);
 
 
 #endif

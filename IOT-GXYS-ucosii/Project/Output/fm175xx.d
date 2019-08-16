@@ -13,3 +13,4 @@
 .\output\fm175xx.o: ..\User\driver\spi_175xx.h
 .\output\fm175xx.o: ..\User\driver\fm175xx.h
 .\output\fm175xx.o: ..\User\driver\led_app.h
+.\output\fm175xx.o: ..\User\app\nfc_app.h

@@ -50,10 +50,10 @@
 *                                            TASK PRIORITIES
 *********************************************************************************************************
 */
-#define  APP_TASK_LED1_PRIO                               4
-#define  APP_TASK_LED2_PRIO                               3
-#define  APP_TASK_SEC_PRIO                                2
-#define  APP_TASK_4G_PRIO                                 5
+#define  APP_TASK_NFC_PRIO                               4
+#define  APP_TASK_LED2_PRIO                              3
+#define  APP_TASK_SEC_PRIO                               2
+#define  APP_TASK_4G_PRIO                                5
 
 /*
 *********************************************************************************************************
@@ -61,9 +61,9 @@
 *                             Size of the task stacks (# of OS_STK entries)
 *********************************************************************************************************
 */
-#define  APP_TASK_LED1_STK_SIZE                         128
+#define  App_Task_NFC_Stk_SIZE                         	128
 #define  APP_TASK_LED2_STK_SIZE                         128
-#define  APP_TASK_SEC_STK_SIZE                         	128
+#define  APP_TASK_SEC_STK_SIZE                         	512
 #define	 APP_TASK_4G_STK_SIZE							128
 
 /*

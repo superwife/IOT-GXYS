@@ -46,9 +46,14 @@ typedef enum {
 	LOCK_OFF,						//¹ØËø
 }LOCK_ON_OFF_TYPE;
 
+struct IR_DATA_ST{
+	char ir_tx1 :1;
+	char ir_tx2 :1;
+	char revse  :6;
+};
 
 
-void signal_motro_gpio_init(void);
+void signal_motor_gpio_init(void);
 void unlocking_ctrl(LOCK_TYPE etpye,LOCK_ON_OFF_TYPE CTRL_CMD);
 
 #endif

@@ -12,7 +12,7 @@
 #include "led_app.h"
 #include "wtn6170.h"
 #include "gprs_protocol_app.h"
-
+#include <string.h>
 /************************************************
 函数名称 ： ShowID
 功    能 ： 打印设备ID
@@ -32,28 +32,40 @@ void ShowID(uint8_t *p)	 //显示卡的卡号，以十六进制显示
         num[i*2+1]>9?(num[i*2+1]+='7'):(num[i*2+1]+='0');
     }
     num[8]=0;
-    printf("ID>>>%s\r\n", num);
+    printf("Read Card ID :%s ", num);
 }
 /************************************************
 函数名称 ： spi_nfc_read_func
 功    能 ： SPI读取函数
 参    数 ： 无
 返 回 值 ： 无
-作    者 ： strongerHuang
 *************************************************/
-void spi_nfc_read_func(void)
+uint8_t spi_nfc_read_func(void)
 {
 	static char status;
+	//char status;
 	static unsigned char TagType[2], SelectedSnr[4];
+	static unsigned char old_id[4];
+	uint8_t i = 0;
+	static uint16_t repeat_cnt = 0;
 	
 	status= PcdRequest(REQ_ALL,TagType);
 	if(!status)
 	{
-		printf("Read Card ID Success\r\n");
 		status = PcdAnticoll(SelectedSnr);
 		ShowID(SelectedSnr);
-		sim7600_send_umbrella_data(SelectedSnr,sizeof(SelectedSnr));			//发送伞信息
-		OSTimeDly(500);
+		sim7600_send_umbrella_data(SelectedSnr,sizeof(SelectedSnr));			//正常识别，发送伞信息
+		return 1;
+//		for(i=0;i<4;i++)
+//		{
+//			if(old_id[i]!=SelectedSnr[i])
+//			{
+//				sim7600_send_umbrella_data(SelectedSnr,sizeof(SelectedSnr));	//正常识别，发送伞信息
+//				OSTimeDly(500);
+//				memmove(old_id,SelectedSnr,4);		
+//				return;
+//			}
+//		}		
 //		if(!status)
 //		{
 //			status=PcdSelect(SelectedSnr);
@@ -77,6 +89,7 @@ void spi_nfc_read_func(void)
 //			}
 //		}
 	}
+	return 0;
 }
 
 /************************************************
@@ -99,19 +112,19 @@ void spi_nfc_init(void)
 *************************************************/
 void InitializeSystem(void)
 {
-	led_ctrl_func(ALM_LED,0);
+//	led_ctrl_func(ALM_LED,0);
 	delay_10ms(10);
 	PcdReset();
 	PcdAntennaOff(); 
 	PcdAntennaOn();  
 	M500PcdConfigISOType( 'A' );
-	led_ctrl_func(ALM_LED,1);
-	delay_10ms(10);	
-	led_ctrl_func(ALM_LED,0);
-	delay_10ms(10);
-	led_ctrl_func(ALM_LED,1);
-	delay_10ms(10);	
-	led_ctrl_func(ALM_LED,0);
+//	led_ctrl_func(ALM_LED,1);
+//	delay_10ms(10);	
+//	led_ctrl_func(ALM_LED,0);
+//	delay_10ms(10);
+//	led_ctrl_func(ALM_LED,1);
+//	delay_10ms(10);	
+//	led_ctrl_func(ALM_LED,0);
 }
 
 /************************************************

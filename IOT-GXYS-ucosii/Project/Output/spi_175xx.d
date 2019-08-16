@@ -18,3 +18,4 @@
 .\output\spi_175xx.o: ..\User\os_cfg.h
 .\output\spi_175xx.o: ..\uCOS-II\Ports\os_cpu.h
 .\output\spi_175xx.o: ..\User\app\gprs_protocol_app.h
+.\output\spi_175xx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

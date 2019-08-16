@@ -14,6 +14,7 @@
 /*-------------- public para ----------------*/
 struct spi_data_info_st spi_info;
 struct REGISTER_INFO_ST register_info;
+struct SYS_TCPIP_INFO_ST sys_tcp_info;
 
 /************************************************
 函数名称 ： spi_flash_init
@@ -173,13 +174,27 @@ void spiflash_test(void)
 参    数 ： 指针+ 指针长度
 返 回 值 ： 无
 *************************************************/
-void get_umbrella_info(uint8_t *data,uint8_t len)
+void get_umbrella_info(void)
 {
 	uint8_t read_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
+	uint8_t write_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
 	
 	memset(read_page_buf,0,sizeof(read_page_buf));
-	SFLASH_ReadNByte(read_page_buf,DEVICE_SPI_INFO_SAVE_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);         //读取页字节数据
-	memmove(data,read_page_buf,len);
+	SFLASH_ReadNByte(read_page_buf,DEVICE_UMB_INFO_SAVE_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);         //读取页字节数据
+	memmove((uint8_t*)&spi_info,read_page_buf,sizeof(struct spi_data_info_st));
+	if(spi_info.total_num==0xff)
+	{
+		printf("write init umbrella infor\r\n");
+		spi_info.info_beg_byte = 0;
+		spi_info.info_dat_size = sizeof(struct spi_data_info_st);
+		spi_info.total_num = 25;
+		spi_info.left_num  = 0;	
+		
+		SFLASH_EraseSector(DEVICE_UMB_INFO_SAVE_SECTOR);															//擦除扇区信息
+		memset(write_page_buf,0,sizeof(write_page_buf));
+		memmove(write_page_buf,&spi_info,sizeof(struct spi_data_info_st));
+		SFLASH_WritePage(write_page_buf, DEVICE_UMB_INFO_SAVE_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);		//更新页字节数据	
+	}
 }
 /************************************************
 函数名称 ： get_umbrella_info
@@ -191,10 +206,10 @@ void update_umbrella_info(uint8_t *data,uint8_t len)
 {
 	uint8_t write_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
 	
-	SFLASH_EraseSector(DEVICE_SPI_INFO_SAVE_SECTOR);															//擦除扇区信息			
+	SFLASH_EraseSector(DEVICE_UMB_INFO_SAVE_SECTOR);															//擦除扇区信息			
 	memset(write_page_buf,0,sizeof(write_page_buf));
 	memmove(write_page_buf,data,len);
-	SFLASH_WritePage(write_page_buf, DEVICE_SPI_INFO_SAVE_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);		//更新页字节数据	
+	SFLASH_WritePage(write_page_buf, DEVICE_UMB_INFO_SAVE_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);		//更新页字节数据	
 }
 
 /************************************************
@@ -203,29 +218,78 @@ void update_umbrella_info(uint8_t *data,uint8_t len)
 参    数 ： 无
 返 回 值 ： 无
 *************************************************/
-void get_device_info(uint8_t *data,uint8_t len)
+void get_device_info(void)
 {	
 	uint8_t read_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
 	uint8_t write_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
 	
 	memset(read_page_buf,0,sizeof(read_page_buf));
-	SFLASH_ReadNByte(read_page_buf,DEVICE_CODE_INFO_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);         //读取页字节数据
-	memmove(&register_info,read_page_buf,sizeof(struct REGISTER_INFO_ST));
-
-	if(register_info.software_version!=SOFTWARE_VERSION)														//确认是否有版本更新
+	SFLASH_ReadNByte(read_page_buf,DEVICE_CODE_INFO_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);         	//读取页字节数据
+	memmove((uint8_t*)&register_info,read_page_buf,sizeof(struct REGISTER_INFO_ST));
+	
+	//117.177.222.140,15100   正常使用
+	//47.100.119.84 ， 30684   调试使用
+//	sys_tcp_info.ip[0] = 47;
+//	sys_tcp_info.ip[1] = 100;
+//	sys_tcp_info.ip[2] = 119;
+//	sys_tcp_info.ip[3] = 84;	
+//	sys_tcp_info.port  = 30684;
+	
+	sys_tcp_info.ip[0] = 117;
+	sys_tcp_info.ip[1] = 177;
+	sys_tcp_info.ip[2] = 222;
+	sys_tcp_info.ip[3] = 140;	
+	sys_tcp_info.port  = 15100;
+	
+	if(register_info.software_version[0]!='V')																	//确认是否有版本更新
 	{
-		printf("New version update device infor\r\n");
-		memmove(register_info.dev_code,DEVICE_CODE_INFO,sizeof(register_info.dev_code));
-		register_info.software_version = SOFTWARE_VERSION;
-		register_info.hardware_version = HARDWARE_VERSION;		
+		printf("write init version device infor\r\n");
+		memmove(register_info.dev_code,DEVICE_CODE_INFO,sizeof(DEVICE_CODE_INFO));
+		memmove(register_info.software_version,SOFTWARE_VERSION,sizeof(SOFTWARE_VERSION));
+		memmove(register_info.hardware_version,HARDWARE_VERSION,sizeof(HARDWARE_VERSION));		
 		
 		SFLASH_EraseSector(DEVICE_CODE_INFO_SECTOR);															//擦除扇区信息
 		memset(write_page_buf,0,sizeof(write_page_buf));
 		memmove(write_page_buf,&register_info,sizeof(struct REGISTER_INFO_ST));
 		SFLASH_WritePage(write_page_buf, DEVICE_CODE_INFO_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);		//更新页字节数据	
 	}
-	memmove(data,&register_info,sizeof(struct REGISTER_INFO_ST));
-	printf("device code:%s \r\nsoftware_version:%d\r\nhardware_version:%d\r\n",register_info.dev_code,register_info.software_version,register_info.hardware_version);
+	
+	
+//	if(strncmp(register_info.software_version,SOFTWARE_VERSION,sizeof(SOFTWARE_VERSION))!=0)					//确认是否有版本更新
+//	{
+//		printf("New version update device infor\r\n");
+//		memmove(register_info.dev_code,DEVICE_CODE_INFO,sizeof(register_info.dev_code));
+//		memmove(register_info.software_version,SOFTWARE_VERSION,sizeof(register_info.software_version));
+//		memmove(register_info.hardware_version,HARDWARE_VERSION,sizeof(register_info.hardware_version));		
+//		
+//		SFLASH_EraseSector(DEVICE_CODE_INFO_SECTOR);															//擦除扇区信息
+//		memset(write_page_buf,0,sizeof(write_page_buf));
+//		memmove(write_page_buf,&register_info,sizeof(struct REGISTER_INFO_ST));
+//		SFLASH_WritePage(write_page_buf, DEVICE_CODE_INFO_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);		//更新页字节数据	
+//	}
+//	memmove(data,&register_info,sizeof(struct REGISTER_INFO_ST));
+	
+}
+/************************************************
+函数名称 ： update_device_info
+功    能 ： 获取设备信息
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void update_device_info(void)
+{	
+	uint8_t write_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
+	uint8_t read_page_buf[SPI_FLASH_PAGE_BYTE] = {0};
+	
+	printf("before version:\r\ndevice code:%s \r\nsoftware_version:%s\r\nhardware_version:%s\r\n",register_info.dev_code,register_info.software_version,register_info.hardware_version);
+	SFLASH_EraseSector(DEVICE_CODE_INFO_SECTOR);															//擦除扇区信息
+	
+	memmove(write_page_buf,&register_info,sizeof(struct REGISTER_INFO_ST));
+	SFLASH_WritePage(write_page_buf, DEVICE_CODE_INFO_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);		//更新页字节数据	
+
+	SFLASH_ReadNByte(read_page_buf,DEVICE_CODE_INFO_PAGE*SPI_FLASH_PAGE_BYTE, SPI_FLASH_PAGE_BYTE);         //读取页字节数据
+	memmove(&register_info,read_page_buf,sizeof(struct REGISTER_INFO_ST));
+	printf("after version:\r\ndevice code:%s \r\nsoftware_version:%s\r\nhardware_version:%s\r\n",register_info.dev_code,register_info.software_version,register_info.hardware_version);
 }
 
 

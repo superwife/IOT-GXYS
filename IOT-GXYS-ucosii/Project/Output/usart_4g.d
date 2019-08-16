@@ -17,3 +17,4 @@
 .\output\usart_4g.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_dma.h
 .\output\usart_4g.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
 .\output\usart_4g.o: ..\User\app\gprs_protocol_app.h
+.\output\usart_4g.o: ..\User\driver\spi_flash.h

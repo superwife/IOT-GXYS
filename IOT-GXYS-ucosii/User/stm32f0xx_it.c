@@ -51,11 +51,16 @@ void NMI_Handler(void)
   * @param  无
   * @retval 无
 *******************************************************************************/
+__asm void wait()
+{
+      BX lr
+}
 void HardFault_Handler(void)
 {
-    //当硬件错误发生时进入死循环 
+    //当硬件错误发生时进入死循环 	
     while (1)
     {
+		wait();
     }
 }
 

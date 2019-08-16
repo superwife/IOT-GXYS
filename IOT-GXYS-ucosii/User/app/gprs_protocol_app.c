@@ -14,6 +14,8 @@
 #include "wtn6170.h"
 #include "led_app.h"
 #include "spi_flash.h"
+#include "nfc_app.h"
+#include "spi_175xx.h"
 
 /*------------------ extern func ---------------------*/
 void  App_Task_4G(void* p_arg);
@@ -23,14 +25,17 @@ void  App_Task_4G(void* p_arg);
 
 /*------------------ public para ---------------------*/
 uint8_t cmd_data[DMA_DATA_LEN]={0};
+uint8_t cmd_len = 0;
+//uint8_t recv_deal_flag = 0;
 
 /*------------------ extern para ---------------------*/
 extern struct sim7600_flag_st sim7600_flag;
 extern struct REGISTER_INFO_ST register_info;
 extern struct spi_data_info_st spi_info;
 extern uint32_t sim7600_connt_err_cnt;
-extern uint8_t nfc_work_mode;									//定义nfc工作模式，1：借伞模式，0：添伞模式
+extern struct NFC_DATA_ST nfc_flag;								//定义nfc工作模式，1：借伞模式，0：添伞模式
 extern OS_EVENT *sim_4g_sem;									//4g通信信号量
+extern struct IR_DATA_ST ir_dat;								//红外检测信号
 
 void usart_data_send(void);
 
@@ -43,11 +48,18 @@ void usart_data_send(void);
 void  App_Task_4G(void* p_arg)
 {
 	uint8_t err = 0;
+	uint8_t deal_data[64] = {0};
 	while(1)
-	{
-		OSSemPend(sim_4g_sem, 0, &err);
-		printf("recv sim data\r\n");
-		protocol_deal(cmd_data);
+	{	
+//		if(recv_deal_flag==1)
+//		{
+			OSSemPend(sim_4g_sem, 0, &err);
+			memset(deal_data,0,sizeof(deal_data));
+			printf("recv sim data\r\n");
+			memmove(deal_data,cmd_data,cmd_len);
+			protocol_deal(deal_data);
+//			recv_deal_flag = 0;
+//		}
 		OSTimeDly(200);
 	}
 }
@@ -86,6 +98,39 @@ void sim7600_stat_check(void)
 	}
 	
 }
+/****************************************************
+* Function Name  : multi_pakg_deal
+* Description    : 
+* Input          : 		 	
+* Output         : None
+* Return         : None
+*****************************************************/
+void multi_pakg_deal(uint8_t *multi_data,uint8_t total_len)
+{
+	uint8_t pakg_len = 0,i=0,list_len = 0,shift_len = 0;
+	uint8_t data[128] = {0};
+	
+	list_len = total_len;
+	for(i=0;i<total_len;i++)
+	{	
+		if((multi_data[i]==0x55)&&(multi_data[i+1]==0xaa))
+		{
+			pakg_len = (multi_data[i+2]<<8)+multi_data[i+3];
+			if(pakg_len <= list_len)
+			{
+				memset(data,0,sizeof(data));
+				memmove(data,multi_data+shift_len,pakg_len);
+				sim7600_data_deal(data,pakg_len);
+				list_len = list_len - pakg_len;
+				shift_len = shift_len + pakg_len;
+				if(list_len<8)
+				{
+					return;
+				}
+			}
+		}
+	}
+}
 /************************************************
 函数名称 ： sim7600_data_deal
 功    能 ： sim7600数据接收处理函数
@@ -98,14 +143,14 @@ void sim7600_data_deal(uint8_t *data,uint16_t len)
 	
 #define RECV_PRINT
 #ifdef 	RECV_PRINT
-	printf("recv data:\r\n");
+	printf("recv len :%d data:\r\n",len);
 	for (i=0; i<len; i++)
 	{
 		printf("%x ",data[i]);
 	}
 	printf("\r\n");
 #endif
-	
+	led_ctrl_func(ALM_LED,0);
 	if ((data[0]==0x55)&&(data[1]==0xaa)&&(((data[2]<<8)+data[3])==len))
 	{	
 		for (i=0; i<len-1; i++)
@@ -117,7 +162,9 @@ void sim7600_data_deal(uint8_t *data,uint16_t len)
 			sim7600_connt_err_cnt=0;
 			memset(cmd_data,0,sizeof(cmd_data));
 			memmove(cmd_data,data,len);
+			cmd_len = len;
 			OSSemPost(sim_4g_sem);
+//			recv_deal_flag = 1;
 		}
 	}
 }
@@ -129,7 +176,8 @@ void sim7600_data_deal(uint8_t *data,uint16_t len)
 *************************************************/
 void protocol_deal(uint8_t *data)
 {
-	uint8_t i = 0;
+	uint16_t i = 0,count = 0;
+	static uint8_t cmd_id[8] = {0},lock_type = 0;
 	switch(data[4])
 	{
 		case LIFE_SIGNAL_CMD:
@@ -137,68 +185,97 @@ void protocol_deal(uint8_t *data)
 			
 			break;
 		case PICK_UP_CMD:
+			nfc_flag.update_flag = 1;									//nfc使用更新
 			if(data[7]==0x01)
 			{
 				printf("recv PICK_UP_CMD\r\n");
-				wtn_send_data(PLEASE_PICK_UP);								//语音提示取伞
-				sim7600_reply_pickup_data(CONFIRM_OK);						//回复消息
+				nfc_flag.work_mode  = 1;									//前门nfc
+				nfc_flag.start_flag = 1;									//开始nfc识别
+				nfc_flag.book_back_lock = 0;								//借伞锁
+				nfc_flag.wtn_pick_up_flag = 1;								//语音提示取伞
+				sim7600_reply_pickup_data(CONFIRM_OK,&data[8]);				//回复消息
 			}
 			break;
 		case UNLOCKING_CMD:
+			nfc_flag.update_flag = 1;										//nfc使用更新
 			if(data[7]==0x01)
 			{
+				memmove(cmd_id,&data[9],8);
 				switch(data[8])
 				{
 					case 0x01:														//开借伞锁
+						lock_type = 0x01;
 						printf("recv UNLOCKING_BOOK_LOCK_CMD\r\n");
+						nfc_flag.wtn_pick_up_flag = 0;								//停止语音播报取伞
+						nfc_flag.work_mode  = 1;									//前门nfc
+						nfc_flag.start_flag = 1;									//开始nfc识别
+						nfc_flag.book_back_lock = 0;								//借伞锁
 						unlocking_ctrl(BOOK_LOCK,LOCK_ON);							//开锁
-						for(i=0;i<UNLOCK_TIME_OUT_CNT*5;i++)
+						ir_dat.ir_tx1 = 0;
+						for(i=0;i<UNLOCK_TIME_OUT_CNT*200;i++)
 						{
-							OSTimeDly(200);
-							if(BOOK_INFRA_RX_CHECK==0)
+							OSTimeDly(5);
+							if(i%600==0)
 							{
-								delay_us(2);
-								if(BOOK_INFRA_RX_CHECK==0)
-								{
-									wtn_send_data(BOOK_SUCCESS);					//语音提示
-									sim7600_reply_unlocking_data(CONFIRM_OK);		//确认开锁成功
-									OSTimeDly(500);
-									unlocking_ctrl(BOOK_LOCK,LOCK_OFF);				//关锁
-									printf("unlock BOOK_LOCK success\r\n");
-									return;
-								}
+								wtn_send_data(PUSH_OFF_UMB);						//推出闸机口
+							}
+							if(ir_dat.ir_tx1==1)
+							{
+								wtn_send_data(BOOK_SUCCESS);					//语音提示
+								sim7600_reply_unlocking_data(CONFIRM_OK,lock_type,cmd_id);//确认开锁成功
+								OSTimeDly(500);
+								unlocking_ctrl(BOOK_LOCK,LOCK_OFF);				//关锁
+								printf("unlock BOOK_LOCK success\r\n");
+								nfc_flag.start_flag = 0;						//停止nfc识别
+								ir_dat.ir_tx1 = 0;
+								return;
 							}
 						}
-						sim7600_reply_unlocking_data(UNLOCKING_ERR);				//开锁失败
+						ir_dat.ir_tx1 = 0;
+						nfc_flag.start_flag = 0;									//停止nfc识别
+						sim7600_reply_unlocking_data(UNLOCKING_ERR,lock_type,cmd_id);//开锁失败
 						unlocking_ctrl(BOOK_LOCK,LOCK_OFF);							//关锁
 						printf("unlock BOOK_LOCK err\r\n");
 						break;
 					case 0x02:
+						lock_type = 0x02;
 						printf("recv UNLOCKING_RETURN_LOCK_CMD\r\n");				//开还伞锁
+						nfc_flag.work_mode  = 1;									//前门nfc
+						nfc_flag.start_flag = 1;									//开始nfc识别
+						nfc_flag.book_back_lock = 1;								//还伞锁
 						unlocking_ctrl(RETURN_LOCK,LOCK_ON);						//开锁
-						for(i=0;i<UNLOCK_TIME_OUT_CNT*5;i++)						//超时检测
+						ir_dat.ir_tx2 = 0;
+						for(i=0;i<UNLOCK_TIME_OUT_CNT*200;i++)						//超时检测
 						{
-							OSTimeDly(200);
-							if(RETURN_INFRA_RX_CHECK==0)
+							OSTimeDly(5);
+							
+							if(i%600==0)
 							{
-								delay_us(2);
-								if(RETURN_INFRA_RX_CHECK==0)
-								{
-									wtn_send_data(BOOK_SUCCESS);					//语音提示
-									sim7600_reply_unlocking_data(CONFIRM_OK);		//确认开锁成功
-									OSTimeDly(500);
-									unlocking_ctrl(RETURN_LOCK,LOCK_OFF);			//关锁
-									printf("unlock RETURN_LOCK success\r\n");
-									return;
-								}
+								wtn_send_data(PUSH_IN_UMB);							//推入闸机口
+							}
+							if(ir_dat.ir_tx2==1)
+							{
+								//wtn_send_data(RETURN_SUCCESS);						//语音提示
+								sim7600_reply_unlocking_data(CONFIRM_OK,lock_type,cmd_id);//确认开锁成功
+								OSTimeDly(200);
+								unlocking_ctrl(RETURN_LOCK,LOCK_OFF);				//关锁
+								OSTimeDly(200);
+								printf("unlock RETURN_LOCK success\r\n");
+								ir_dat.ir_tx2 = 0;
+								return;
 							}
 						}
-						sim7600_reply_unlocking_data(UNLOCKING_ERR);				//开锁失败
+						ir_dat.ir_tx2 = 0;
+						sim7600_reply_unlocking_data(UNLOCKING_ERR,lock_type,cmd_id);//开锁失败
 						unlocking_ctrl(RETURN_LOCK,LOCK_OFF);						//关锁
+						nfc_flag.start_flag = 0;									//停止nfc识别
 						printf("unlock RETURN_LOCK err\r\n");
 						break;
 					case 0x03:
+						lock_type = 0x03;
 						printf("recv UNLOCKING_ADD_LOCK_CMD\r\n");					//开添伞锁
+						nfc_flag.work_mode  = 0;									//后门nfc
+						nfc_flag.start_flag = 1;									//开始nfc识别
 						for(i=0;i<3;i++)
 						{
 							unlocking_ctrl(ADD_LOCK,LOCK_ON);						//开锁
@@ -207,12 +284,12 @@ void protocol_deal(uint8_t *data)
 							{
 								unlocking_ctrl(ADD_LOCK,LOCK_ON);					//开锁
 								wtn_send_data(BOOK_SUCCESS);						//语音提示
-								sim7600_reply_unlocking_data(CONFIRM_OK);			//确认开锁成功
+								sim7600_reply_unlocking_data(CONFIRM_OK,lock_type,cmd_id);//确认开锁成功
 								unlocking_ctrl(ADD_LOCK,LOCK_OFF);					//关锁
 								return;
 							}
 						}
-						sim7600_reply_unlocking_data(UNLOCKING_ERR);				//确认开锁成功
+						sim7600_reply_unlocking_data(UNLOCKING_ERR,lock_type,cmd_id);		//确认开锁成功
 						unlocking_ctrl(ADD_LOCK,LOCK_OFF);							//关锁
 						break;
 					default:
@@ -225,7 +302,6 @@ void protocol_deal(uint8_t *data)
 			if(data[7]==CONFIRM_OK)
 			{
 				printf("recv UMBRELLA_MSG_CMD\r\n");
-				make_buzzer_sound();
 			}
 			
 			break;
@@ -233,14 +309,18 @@ void protocol_deal(uint8_t *data)
 			if(data[7]==0x01)
 			{
 				printf("recv GIVE_BACK_OVER_CMD\r\n");
-				sim7600_reply_return_data(CONFIRM_OK);						//确认归还成功
+				wtn_send_data(RETURN_SUCCESS);								//语音提示
+				sim7600_reply_return_data(CONFIRM_OK,&data[8]);				//确认归还成功
+				nfc_flag.start_flag = 0;									//停止nfc识别
 			}
 			break;
 		case ADD_UMBRELLA_CMD:
+			nfc_flag.update_flag = 1;										//nfc使用更新
 			if(data[7]==0x01)
 			{
 				printf("recv ADD_UMBRELLA_CMD\r\n");
-				sim7600_reply_add_data(CONFIRM_OK);							//确认添伞成功
+				sim7600_reply_add_data(CONFIRM_OK,&data[8]);				//确认添伞成功
+				make_buzzer_sound();
 			}
 			break;
 		case REGISTER_INFO_CMD:
@@ -249,7 +329,22 @@ void protocol_deal(uint8_t *data)
 				printf("recv REGISTER_INFO_CMD\r\n");
 				sim7600_flag.sim7600_register_flag = 1;						//确认注册成功
 			}		
-			break;		
+			break;	
+		case SYS_CHECK_CMD:
+			if(data[7]==0x01)
+			{
+				printf("recv SYS_CHECK_CMD\r\n");
+				sim7600_reply_sys_stat_data();
+			}
+			break;
+		case RESATRT_CMD:
+			if(data[7]==0x01)
+			{
+				printf("recv RESATRT_CMD\r\n");
+				sim7600_flag.sys_restart_flag = 1;
+				sim7600_reply_restart_data();
+			}
+			break;	
 		default:
 			break;
 	}
@@ -264,12 +359,35 @@ void protocol_deal(uint8_t *data)
 *************************************************/
 void sim7600_send_lifesignal_data(uint8_t life_cnt)
 {
-	uint8_t buffer[21] = {0};
+	uint8_t buffer[1] = {0};
 	buffer[0] = life_cnt;														//生命信号计数
-	memmove(buffer+1,register_info.dev_code,sizeof(register_info.dev_code));	//设备编码信息，设备ID
-	buffer[19] = spi_info.total_num;											//总伞数量
-	buffer[20] = spi_info.left_num;												//剩余伞数量
 	gprs_protocol_data_send(SERVER_BOARD,LIFE_SIGNAL_CMD,buffer,sizeof(buffer));
+}
+/************************************************
+函数名称 ： sim7600_reply_restart_data
+功    能 ： 回复复位信号
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void sim7600_reply_restart_data(void)
+{
+	uint8_t buffer[1] = {0};
+	buffer[0] = CONFIRM_OK;
+	gprs_protocol_data_send(SERVER_BOARD,RESATRT_CMD,buffer,sizeof(buffer));
+}
+/************************************************
+函数名称 ： sim7600_reply_sys_stat_data
+功    能 ： 发送系统状态
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void sim7600_reply_sys_stat_data(void)
+{
+	uint8_t buffer[3] = {0};
+	buffer[0] = CONFIRM_OK;														//生命信号计数
+	buffer[1] = spi_info.total_num;												//总伞数量
+	buffer[2] = spi_info.left_num;												//剩余伞数量
+	gprs_protocol_data_send(SERVER_BOARD,SYS_CHECK_CMD,buffer,sizeof(buffer));
 }
 /************************************************
 函数名称 ： sim7600_send_umbrella_data
@@ -284,14 +402,22 @@ void sim7600_send_umbrella_data(uint8_t *data,uint8_t len)
 	{
 		printf("umbrella_data err\r\n");
 	}
-	if(nfc_work_mode == 1)
+	if(nfc_flag.work_mode == 1)
 	{
-		buffer[0] = 0x01;						//伞信息来自借/还伞nfc
+		if(nfc_flag.book_back_lock == 0)		//借伞锁
+		{
+			buffer[0] = 0x00;					//伞信息来自借伞锁nfc	
+		}
+		else
+		{
+			buffer[0] = 0x01;					//伞信息来自还伞锁nfc	
+		}		
 	}
 	else
 	{
 		buffer[0] = 0x02;						//伞信息来自添伞nfc
 	}
+	printf(" NFC :%d\r\n",nfc_flag.work_mode);
 	memmove(buffer+1,data,len);
 	gprs_protocol_data_send(SERVER_BOARD,UMBRELLA_MSG_CMD,buffer,len+1);	
 }
@@ -315,10 +441,14 @@ void sim7600_send_register_data(uint8_t *data,uint8_t len)
 参    数 ： 无
 返 回 值 ： 无
 *************************************************/
-void sim7600_reply_pickup_data(uint8_t etype)
+void sim7600_reply_pickup_data(uint8_t etype,uint8_t *cmd_id)
 {
-	uint8_t buffer[1] = {0};
+	uint8_t buffer[9] = {0},i=0;
 	buffer[0] = etype;						//回复状态
+	for(i=0;i<8;i++)
+	{
+		buffer[i+1] =  cmd_id[i];
+	}
 	gprs_protocol_data_send(SERVER_BOARD,PICK_UP_CMD,buffer,sizeof(buffer));
 }
 /************************************************
@@ -327,10 +457,15 @@ void sim7600_reply_pickup_data(uint8_t etype)
 参    数 ： 无
 返 回 值 ： 无
 *************************************************/
-void sim7600_reply_unlocking_data(uint8_t etype)
+void sim7600_reply_unlocking_data(uint8_t etype,uint8_t lock_type,uint8_t *cmd_id)
 {
-	uint8_t buffer[1] = {0};
+	uint8_t buffer[10] = {0},i=0;
 	buffer[0] = etype;						//回复状态
+	buffer[1] = lock_type;					//锁类型
+	for(i=0;i<8;i++)
+	{
+		buffer[i+2] =  cmd_id[i];
+	}
 	gprs_protocol_data_send(SERVER_BOARD,UNLOCKING_CMD,buffer,sizeof(buffer));
 }
 /************************************************
@@ -339,10 +474,14 @@ void sim7600_reply_unlocking_data(uint8_t etype)
 参    数 ： 无
 返 回 值 ： 无
 *************************************************/
-void sim7600_reply_return_data(uint8_t etype)
+void sim7600_reply_return_data(uint8_t etype,uint8_t *cmd_id)
 {
-	uint8_t buffer[1] = {0};
+	uint8_t buffer[9] = {0},i=0;
 	buffer[0] = etype;						//回复状态
+	for(i=0;i<8;i++)
+	{
+		buffer[i+1] =  cmd_id[i];
+	}
 	gprs_protocol_data_send(SERVER_BOARD,GIVE_BACK_OVER_CMD,buffer,sizeof(buffer));
 }
 /************************************************
@@ -351,10 +490,14 @@ void sim7600_reply_return_data(uint8_t etype)
 参    数 ： 无
 返 回 值 ： 无
 *************************************************/
-void sim7600_reply_add_data(uint8_t etype)
+void sim7600_reply_add_data(uint8_t etype,uint8_t *cmd_id)
 {
-	uint8_t buffer[1] = {0};
+	uint8_t buffer[9] = {0},i=0;
 	buffer[0] = etype;						//数据有效
+	for(i=0;i<8;i++)
+	{
+		buffer[i+1] =  cmd_id[i];
+	}
 	gprs_protocol_data_send(SERVER_BOARD,ADD_UMBRELLA_CMD,buffer,sizeof(buffer));
 }
 

@@ -61,7 +61,7 @@ void spi_nfc_gpio_init(void);
 void spi_nfc_mode_config(void);
 void spi_nfc_init(void);
 void InitializeSystem(void);
-void spi_nfc_read_func(void);
+uint8_t spi_nfc_read_func(void);
 
 
 

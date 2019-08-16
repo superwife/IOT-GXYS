@@ -11,3 +11,6 @@
 .\output\motor_ctrl.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h
 .\output\motor_ctrl.o: ..\User\driver\motor_ctrl.h
 .\output\motor_ctrl.o: ..\User\driver\led_app.h
+.\output\motor_ctrl.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_exti.h
+.\output\motor_ctrl.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_syscfg.h
+.\output\motor_ctrl.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h

@@ -11,11 +11,14 @@
 #include "led_app.h"
 #include "usart_4g.h"
 #include "gprs_protocol_app.h"
+#include "spi_flash.h"
 /*----------------- public para-----------------------------*/
 uint8_t  DMA_Tx_Buf[DMA_DATA_LEN];
 uint8_t  DMA_Rx_Buf[DMA_DATA_LEN];
 
 struct sim7600_flag_st sim7600_flag;
+
+extern struct SYS_TCPIP_INFO_ST sys_tcp_info;
 
 
 /************************************************
@@ -43,6 +46,8 @@ void sim7600_flag_init(void)
 	sim7600_flag.sim7600_work_flag 	   = 0;			//4g模块工作标志
 	sim7600_flag.sim7600_status_flag   = 0;			//4g模块status状态标志
 	sim7600_flag.sim7600_register_flag = 0;			//4g模块注册状态
+	sim7600_flag.sys_restart_flag      = 0;			//系统重启标志位
+	sim7600_flag.reconnect_cnt		   = 0;			//重连计数
 }
 /************************************************
 函数名称 ： usart_4g_gpio_init
@@ -230,6 +235,23 @@ void AT_TEST(void)
 	usart_4g_send_data("AT\r\n",sizeof("AT\r\n"));
 }
 /************************************************
+函数名称 ： AT_QUIT
+功    能 ： 退出透传模式
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void AT_QUIT(void)
+{
+	usart_4g_send_data("+++",sizeof("+++"));
+//	delay_ms(500);
+//	usart_4g_send_data("+",sizeof("+"));
+//	delay_ms(500);
+//	OSTimeDly(100);
+//	Usart2_SendNByte("+",1);
+//	OSTimeDly(100);
+//	Usart2_SendNByte("+",1);
+}
+/************************************************
 函数名称 ： AT_CSQ
 功    能 ： 
 参    数 ： 无
@@ -290,14 +312,54 @@ void AT_CIPRXGET(void)
 	usart_4g_send_data("AT+CIPRXGET=1\r\n",sizeof("AT+CIPRXGET=1\r\n"));
 }
 /************************************************
+函数名称 ： atopen_cmd_turn
+功    能 ： 转换ip函数
+参    数 ： 无
+返 回 值 ： 无
+*************************************************/
+void atopen_cmd_turn(char *at_cmd,uint8_t *data_ip,uint16_t data_port)
+{
+    char str[6];
+
+    sprintf(at_cmd,"AT+CIPOPEN=0,\"TCP\",",sizeof("AT+CIPSTART=\"TCP\","));    
+    strcat(at_cmd,"\"");
+    sprintf(str,"%d",data_ip[0]);
+    strcat(at_cmd,str);
+    strcat(at_cmd,".");
+
+    sprintf(str,"%d",data_ip[1]);
+    strcat(at_cmd,str);
+    strcat(at_cmd,".");
+
+    sprintf(str,"%d",data_ip[2]);
+    strcat(at_cmd,str);
+    strcat(at_cmd,".");
+
+    sprintf(str,"%d",data_ip[3]);
+    strcat(at_cmd,str);
+    strcat(at_cmd,"\",");
+
+    sprintf(str,"%d",data_port);
+    strcat(at_cmd,str);
+
+    strcat(at_cmd,"\r\n");
+}
+/************************************************
 函数名称 ： AT_CIPOPEN
 功    能 ： 设置ip
 参    数 ： 无	m24n990065.qicp.vip 111.67.206.112
 返 回 值 ： 无
 *************************************************/
+//void AT_CIPOPEN(void)											
+//{
+//	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"117.177.222.140\",15100\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"117.177.222.140\",15100\r\n"));
+//}
 void AT_CIPOPEN(void)											
 {
-	usart_4g_send_data("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n",sizeof("AT+CIPOPEN=0,\"TCP\",\"m24n990065.qicp.vip\",40035\r\n"));
+	char at_cmd[64];
+	
+	atopen_cmd_turn(at_cmd,sys_tcp_info.ip,sys_tcp_info.port);
+	usart_4g_send_data(at_cmd,strlen(at_cmd)+1);
 }
 /************************************************
 函数名称 ： AT_CHECK_CIPOPEN
@@ -347,8 +409,8 @@ void AT_ATO(void)
 *************************************************/
 void usart_4g_send_data(uint8_t *data,uint32_t len)
 {
-	Usart2_SendNByte(data,len);
 	printf("SendCmd:%s",data);	
+	Usart2_SendNByte(data,len);
 }
 /************************************************
 函数名称 ： sim7600ce_config
@@ -358,7 +420,10 @@ void usart_4g_send_data(uint8_t *data,uint32_t len)
 *************************************************/
 void sim7600ce_config(void)
 {
-	printf("start sim7600ce_config...\r\n");	
+	printf("start sim7600ce_config...\r\n");
+	OSTimeDly(2000);
+	AT_QUIT();
+	OSTimeDly(1000);
 	AT_NETCLOSE();
 	OSTimeDly(1000);
 	AT_CGDCONT();
@@ -370,7 +435,7 @@ void sim7600ce_config(void)
 	AT_CIPOPEN();
 	OSTimeDly(1000);
 	AT_ATO();
-	OSTimeDly(1000);
+	//OSTimeDly(1000);
 	usart_4g_config(115200);	
 	OSTimeDly(1000);
 	
@@ -410,6 +475,7 @@ void USART2_IRQHandler(void)
 {
 	static uint8_t recv_cnt = 0;
 	uint8_t i=0;
+	OSIntEnter();
 	if(USART_GetITStatus(USART2, USART_IT_IDLE) != RESET)  
 	{
 		uint32_t dma_len = 0,i=0; 			
@@ -424,18 +490,13 @@ void USART2_IRQHandler(void)
 //			printf("%x ",DMA_Rx_Buf[i]);
 //		}
 //		printf("\r\n");	
-		sim7600_data_deal(DMA_Rx_Buf,dma_len);
+		multi_pakg_deal(DMA_Rx_Buf,dma_len);
 		memset(DMA_Rx_Buf,0,sizeof(DMA_Rx_Buf));
 		/* set dma send_len ,the dma_receive buff will be clear automatically*/
 		DMA_SetCurrDataCounter(DMA1_Channel5,DMA_DATA_LEN);  						
 		DMA_Cmd(DMA1_Channel5,ENABLE);
 	} 
-//	if(USART_GetITStatus(USART2, USART_IT_TC) != RESET) 							  
-//	{   
-//		printf("Send data over\r\n");
-//		USART_ClearITPendingBit(USART2, USART_IT_TC);
-//		DMA_Cmd(DMA1_Channel4, DISABLE);		
-//	}
+	OSIntExit();
 }
 
 

@@ -17,7 +17,7 @@
 void make_buzzer_sound(void)
 {
 	BUZZER_ON;
-	OSTimeDly(500);
+	OSTimeDly(200);
 	BUZZER_OFF;
 }
 
@@ -65,7 +65,7 @@ void wtn_send_data(uint8_t data)
 	
 	WTN_DATA_H;
 	WTN_DATA_L;
-	delay_ms(5);
+	delay_ms(2);
 	
 	send_data = data;
 	for(i=0;i<8;i++)
@@ -73,16 +73,16 @@ void wtn_send_data(uint8_t data)
 		if(send_data&0x01)
 		{
 			WTN_DATA_H;
-			delay_us(600);
+			delay_us(300);
 			WTN_DATA_L;
-			delay_us(200);
+			delay_us(100);
 		}	
 		else
 		{
 			WTN_DATA_H;
-			delay_us(200);
+			delay_us(100);
 			WTN_DATA_L;
-			delay_us(600);
+			delay_us(300);
 		}
 		send_data = send_data>>1;		
 	}

@@ -20,8 +20,11 @@
 #define BUZZER_OFF              GPIO_ResetBits(BUZZER_PORT, BUZZER_PIN)
 
 //”Ô“Ù√¸¡Ó¿‡–Õ
-#define PLEASE_PICK_UP			0x01
-#define BOOK_SUCCESS			0x02
+#define PLEASE_PICK_UP			0x1A
+#define BOOK_SUCCESS			0x1B
+#define PUSH_OFF_UMB			0x1C
+#define PUSH_IN_UMB				0x1D
+#define RETURN_SUCCESS			0x1E
 
 void make_buzzer_sound(void);
 void wtn6170_gpio_init(void);

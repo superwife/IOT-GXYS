@@ -147,7 +147,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>11</TargetSelection>
+          <TargetSelection>6</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -161,7 +161,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
+            <Driver>Segger\JL2CM3.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -171,10 +171,10 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4103</DriverSelection>
+            <DriverSelection>4099</DriverSelection>
           </Flash1>
           <bUseTDR>0</bUseTDR>
-          <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
+          <Flash2>Segger\JL2CM3.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
@@ -419,11 +419,6 @@
               <FilePath>..\User\stm32f0xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>sec_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\app\sec_app.c</FilePath>
-            </File>
-            <File>
               <FileName>spi_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\driver\spi_flash.c</FilePath>
@@ -433,11 +428,26 @@
               <FileType>1</FileType>
               <FilePath>..\User\app\gprs_protocol_app.c</FilePath>
             </File>
+            <File>
+              <FileName>ptu_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\app\ptu_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>nfc_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\app\nfc_app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>driver</GroupName>
           <Files>
+            <File>
+              <FileName>sec_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\app\sec_app.c</FilePath>
+            </File>
             <File>
               <FileName>led_app.c</FileName>
               <FileType>1</FileType>

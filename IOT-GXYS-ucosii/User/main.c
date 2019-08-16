@@ -16,14 +16,14 @@ OS_EVENT *sim_4g_sem;
 
 /* 私有变量 ------------------------------------------------------------------*/
 /* 变量 ----------------------------------------------------------------------*/
-static  OS_STK   App_Task_LED1_Stk[APP_TASK_LED1_STK_SIZE];
-static  OS_STK   App_Task_LED2_Stk[APP_TASK_LED2_STK_SIZE];
+static  OS_STK   App_Task_NFC_Stk[App_Task_NFC_Stk_SIZE];
+//static  OS_STK   App_Task_LED2_Stk[APP_TASK_LED2_STK_SIZE];
 static  OS_STK   App_Task_SEC_Stk[APP_TASK_SEC_STK_SIZE];
 static  OS_STK   App_Task_4G_Stk[APP_TASK_4G_STK_SIZE];
 
 /* 任务函数 ------------------------------------------------------------------*/
-static  void  App_Task_LED1(void* p_arg);
-static  void  App_Task_LED2(void* p_arg);
+extern  void  App_Task_NFC(void* p_arg);
+//static  void  App_Task_LED2(void* p_arg);
 extern  void  App_Task_SEC(void* p_arg);
 extern  void  App_Task_4G(void* p_arg);
 
@@ -42,19 +42,19 @@ int main(void)
     INT8U os_err;
     OSInit();
     OS_CPU_SysTickInit();
-	//iwdg_init();
+	iwdg_init();
 	LED_Configuration ();
 	USART_Initializes();
 	
-	sim_4g_sem = OSSemCreate(1);								//创建信号量
+	sim_4g_sem = OSSemCreate(0);								//创建信号量
     
-//    //创建LED1闪烁的任务
-//    os_err = OSTaskCreate( App_Task_LED1,
-//                          (void *) 0,
-//                          (OS_STK *) &App_Task_LED1_Stk[APP_TASK_LED1_STK_SIZE - 1],
-//                          (INT8U) APP_TASK_LED1_PRIO);
+    //创建LED1闪烁的任务
+    os_err = OSTaskCreate( App_Task_NFC,
+                          (void *) 0,
+                          (OS_STK *) &App_Task_NFC_Stk[App_Task_NFC_Stk_SIZE - 1],
+                          (INT8U) APP_TASK_NFC_PRIO);
 
-    //创建4g通信模块任务
+//    //创建4g通信模块任务
 //    os_err = OSTaskCreate( App_Task_LED2,
 //                          (void*) 0,
 //                          (OS_STK*) &App_Task_LED2_Stk[APP_TASK_LED2_STK_SIZE - 1],
@@ -110,9 +110,9 @@ void App_Task_LED2(void* pdata)
 
     for (;;)
     {
-        LED_On(ALM_LED);
+        LED_On(SYS_LED);
         OSTimeDly(1000);
-        LED_Off(ALM_LED);
+        LED_Off(SYS_LED);
         OSTimeDly(1000);
     }
 }
@@ -157,6 +157,7 @@ void iwdg_feed(void)
 {
 	IWDG_ReloadCounter();
 }
+
 
 #ifdef  USE_FULL_ASSERT
 /***************************************************************************//**

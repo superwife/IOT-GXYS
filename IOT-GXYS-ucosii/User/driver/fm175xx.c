@@ -3,9 +3,10 @@
 #include "spi_175xx.h"
 #include "fm175xx.h"
 #include "led_app.h"
+#include "nfc_app.h"
 //#include <string.h> 
 /*------------ extern para ---------------*/
-extern uint8_t nfc_work_mode;
+extern struct NFC_DATA_ST nfc_flag;
 
 
 #define MAXRLEN 18                        
@@ -282,14 +283,14 @@ char PcdReset(void)
 	
 	if(ReadRawRC(0x02) == 0x80)
 	{
-		led_ctrl_func(ALM_LED,1);
-		delay_10ms(10);	
-		led_ctrl_func(ALM_LED,0);
-		delay_10ms(10);	
-		led_ctrl_func(ALM_LED,1);
-		delay_10ms(10);	
-		led_ctrl_func(ALM_LED,0);
-		delay_10ms(10);	
+//		led_ctrl_func(ALM_LED,1);
+//		delay_10ms(10);	
+//		led_ctrl_func(ALM_LED,0);
+//		delay_10ms(10);	
+//		led_ctrl_func(ALM_LED,1);
+//		delay_10ms(10);	
+//		led_ctrl_func(ALM_LED,0);
+//		delay_10ms(10);	
 	}
 
     WriteRawRC(CommandReg,PCD_RESETPHASE);
@@ -362,7 +363,7 @@ unsigned char ReadRawRC(unsigned char Address)
 	unsigned char i, ucAddr;
 	unsigned char ucResult=0;
 
-	if(nfc_work_mode==1)
+	if(nfc_flag.work_mode==1)
 	{
 		NSS1_L;
 		NSS2_H;
@@ -396,7 +397,7 @@ unsigned char ReadRawRC(unsigned char Address)
 			ucResult |= 1;
 	}
 	 
-	if(nfc_work_mode==1)
+	if(nfc_flag.work_mode==1)
 	{
 		NSS1_H;
 		NSS2_H;
@@ -423,7 +424,7 @@ void WriteRawRC(unsigned char Address, unsigned char value)
 
     SCK_L;
 	
-	if(nfc_work_mode==1)
+	if(nfc_flag.work_mode==1)
 	{
 		NSS1_L;
 		NSS2_H;
@@ -460,7 +461,7 @@ void WriteRawRC(unsigned char Address, unsigned char value)
         SCK_L;
     }
 	
-	if(nfc_work_mode==1)
+	if(nfc_flag.work_mode==1)
 	{
 		NSS1_H;
 		NSS2_H;

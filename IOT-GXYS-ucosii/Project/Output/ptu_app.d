@@ -1,0 +1,16 @@
+.\output\ptu_app.o: ..\User\app\ptu_app.c
+.\output\ptu_app.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\ptu_app.o: .\Libraries\CMSIS\Include\core_cm0.h
+.\output\ptu_app.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\ptu_app.o: .\Libraries\CMSIS\Include\core_cmInstr.h
+.\output\ptu_app.o: .\Libraries\CMSIS\Include\core_cmFunc.h
+.\output\ptu_app.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h
+.\output\ptu_app.o: ..\User\stm32f0xx_conf.h
+.\output\ptu_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_gpio.h
+.\output\ptu_app.o: .\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\output\ptu_app.o: .\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_rcc.h
+.\output\ptu_app.o: ..\User\app\ptu_app.h
+.\output\ptu_app.o: ..\User\driver\led_app.h
+.\output\ptu_app.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\ptu_app.o: ..\User\driver\usart.h
+.\output\ptu_app.o: ..\User\driver\spi_flash.h
